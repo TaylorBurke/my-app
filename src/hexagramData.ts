@@ -1,67 +1,67 @@
-import forceImg from "./iChingImages/Force.svg.png"
-import fieldImg from "./iChingImages/Field.svg.png"
-import sproutingImg from "./iChingImages/Sprouting.svg.png"
-import envelopingImg from "./iChingImages/Enveloping.svg.png"
-import attendingImg from "./iChingImages/Attending.svg.png"
-import arguingImg from "./iChingImages/Arguing.svg.png"
-import leadingImg from "./iChingImages/Leading.svg.png"
-import groupingImg from "./iChingImages/Grouping.svg.png"
-import smallAccumulatingImg from "./iChingImages/SmallAccumulating.svg.png"
-import treadingImg from "./iChingImages/Treading.svg.png"
-import pervadingImg from "./iChingImages/Pervading.svg.png"
-import obstructionImg from "./iChingImages/Obstruction.svg.png"
-import concordingPeopleImg from "./iChingImages/ConcordingPeople.svg.png"
-import greatPossessingImg from "./iChingImages/GreatPossessing.svg.png"
-import humblingImg from "./iChingImages/Humbling.svg.png"
-import providingForImg from "./iChingImages/Providing-For.svg.png"
-import followingImg from "./iChingImages/Following.svg.png"
-import correctingImg from "./iChingImages/Correcting.svg.png"
-import nearingImg from "./iChingImages/Nearing.svg.png"
-import viewingImg from "./iChingImages/Viewing.svg.png"
-import gnawingBiteImg from "./iChingImages/GnawingBite.svg.png"
-import adorningImg from "./iChingImages/Adorning.svg.png"
-import strippingImg from "./iChingImages/Stripping.svg.png"
-import returningImg from "./iChingImages/Returning.svg.png"
-import withoutEmbroilingImg from "./iChingImages/WithoutEmbroiling.svg.png"
-import greatAccumulatingImg from "./iChingImages/GreatAccumulating.svg.png"
-import swallowingImg from "./iChingImages/Swallowing.svg.png"
-import greatExceedingImg from "./iChingImages/GreatAccumulating.svg.png"
-import gorgeImg from "./iChingImages/Gorge.svg.png"
-import radianceImg from "./iChingImages/Radiance.svg.png"
-import conjoiningImg from "./iChingImages/Conjoining.svg.png"
-import perseveringImg from "./iChingImages/Persevering.svg.png"
-import retiringImg from "./iChingImages/Retiring.svg.png"
-import greatInvigoratingImg from "./iChingImages/GreatInvigorating.svg.png"
-import prosperingImg from "./iChingImages/Prospering.svg.png"
-import darkeningOfTheLightImg from "./iChingImages/DarkeningOfTheLight.svg.png"
-import dwellingPeopleImg from "./iChingImages/DwellingPeople.svg.png"
-import polarisingImg from "./iChingImages/Polarising.svg.png"
-import limpingImg from "./iChingImages/Limping.svg.png"
-import takingApartImg from "./iChingImages/Taking-Apart.svg.png"
-import diminishingImg from "./iChingImages/Diminishing.png"
-import augmentingImg from "./iChingImages/Augmenting.svg.png"
-import displacementImg from "./iChingImages/Displacement.svg.png"
-import couplingImg from "./iChingImages/Coupling.svg.png"
-import clusteringImg from "./iChingImages/Clustering.svg.png"
-import ascendingImg from "./iChingImages/Ascending.svg.png"
-import confiningImg from "./iChingImages/Confining.svg.png"
-import wellingImg from "./iChingImages/Welling.svg.png"
-import skinningImg from "./iChingImages/Skinning.svg.png"
-import holdingImg from "./iChingImages/Holding.svg.png"
-import shakeImg from "./iChingImages/Shake.svg.png"
-import boundImg from "./iChingImages/Bound.svg.png"
-import infiltratingImg from "./iChingImages/Infiltrating.svg.png"
-import convertingTheMaidenImg from "./iChingImages/ConvertingTheMaiden.svg.png"
-import aboundingImg from "./iChingImages/Abounding.svg.png"
-import sojourningImg from "./iChingImages/Sojourning.svg.png"
-import groundImg from "./iChingImages/Ground.svg.png"
-import openImg from "./iChingImages/Open.svg.png"
-import dispersingImg from "./iChingImages/Dispersing.svg.png"
-import articulatingImg from "./iChingImages/Articulating.svg.png"
-import centerReturningImg from "./iChingImages/CenterReturning.svg.png"
-import smallExceedingImg from "./iChingImages/SmallExceeding.svg.png"
-import alreadyFordingImg from "./iChingImages/AlreadyFording.svg.png"
-import notYetFordingImg from "./iChingImages/NotYetFording.svg.png"
+const forceImg = require ("./iChingImages/Force.svg.png")
+const fieldImg = require ("./iChingImages/Field.svg.png")
+const sproutingImg = require ("./iChingImages/Sprouting.svg.png")
+const envelopingImg = require ("./iChingImages/Enveloping.svg.png")
+const attendingImg = require ("./iChingImages/Attending.svg.png")
+const arguingImg = require ("./iChingImages/Arguing.svg.png")
+const leadingImg = require ("./iChingImages/Leading.svg.png")
+const groupingImg = require ("./iChingImages/Grouping.svg.png")
+const smallAccumulatingImg = require ("./iChingImages/SmallAccumulating.svg.png")
+const treadingImg = require ("./iChingImages/Treading.svg.png")
+const pervadingImg = require ("./iChingImages/Pervading.svg.png")
+const obstructionImg = require ("./iChingImages/Obstruction.svg.png")
+const concordingPeopleImg = require ("./iChingImages/ConcordingPeople.svg.png")
+const greatPossessingImg = require ("./iChingImages/GreatPossessing.svg.png")
+const humblingImg = require ("./iChingImages/Humbling.svg.png")
+const providingForImg = require ("./iChingImages/Providing-For.svg.png")
+const followingImg = require ("./iChingImages/Following.svg.png")
+const correctingImg = require ("./iChingImages/Correcting.svg.png")
+const nearingImg = require ("./iChingImages/Nearing.svg.png")
+const viewingImg = require ("./iChingImages/Viewing.svg.png")
+const gnawingBiteImg = require ("./iChingImages/GnawingBite.svg.png")
+const adorningImg = require ("./iChingImages/Adorning.svg.png")
+const strippingImg = require ("./iChingImages/Stripping.svg.png")
+const returningImg = require ("./iChingImages/Returning.svg.png")
+const withoutEmbroilingImg = require ("./iChingImages/WithoutEmbroiling.svg.png")
+const greatAccumulatingImg = require ("./iChingImages/GreatAccumulating.svg.png")
+const swallowingImg = require ("./iChingImages/Swallowing.svg.png")
+const greatExceedingImg = require ("./iChingImages/Force.svg.png")
+const gorgeImg = require ("./iChingImages/Gorge.svg.png")
+const radianceImg = require ("./iChingImages/Radiance.svg.png")
+const conjoiningImg = require ("./iChingImages/Conjoining.svg.png")
+const perseveringImg = require ("./iChingImages/Persevering.svg.png")
+const retiringImg = require ("./iChingImages/Retiring.svg.png")
+const greatInvigoratingImg = require ("./iChingImages/GreatInvigorating.svg.png")
+const prosperingImg = require ("./iChingImages/Prospering.svg.png")
+const darkeningOfTheLightImg = require ("./iChingImages/DarkeningOfTheLight.svg.png")
+const dwellingPeopleImg = require ("./iChingImages/DwellingPeople.svg.png")
+const polarisingImg = require ("./iChingImages/Polarising.svg.png")
+const limpingImg = require ("./iChingImages/Limping.svg.png")
+const takingApartImg = require ("./iChingImages/Taking-Apart.svg.png")
+const diminishingImg = require ("./iChingImages/Diminishing.svg.png")
+const augmentingImg = require ("./iChingImages/Augmenting.svg.png")
+const displacementImg = require ("./iChingImages/Displacement.svg.png")
+const couplingImg = require ("./iChingImages/Coupling.svg.png")
+const clusteringImg = require ("./iChingImages/Clustering.svg.png")
+const ascendingImg = require ("./iChingImages/Ascending.svg.png")
+const confiningImg = require ("./iChingImages/Confining.svg.png")
+const wellingImg = require ("./iChingImages/Welling.svg.png")
+const skinningImg = require ("./iChingImages/Skinning.svg.png")
+const holdingImg = require ("./iChingImages/Holding.svg.png")
+const shakeImg = require ("./iChingImages/Shake.svg.png")
+const boundImg = require ("./iChingImages/Bound.svg.png")
+const infiltratingImg = require ("./iChingImages/Infiltrating.svg.png")
+const convertingTheMaidenImg = require ("./iChingImages/ConvertingTheMaiden.svg.png")
+const aboundingImg = require ("./iChingImages/Abounding.svg.png")
+const sojourningImg = require ("./iChingImages/Sojourning.svg.png")
+const groundImg = require ("./iChingImages/Ground.svg.png")
+const openImg = require ("./iChingImages/Open.svg.png")
+const dispersingImg = require ("./iChingImages/Dispersing.svg.png")
+const articulatingImg = require ("./iChingImages/Articulating.svg.png")
+const centerReturningImg = require ("./iChingImages/CenterReturning.svg.png")
+const smallExceedingImg = require ("./iChingImages/SmallExceeding.svg.png")
+const alreadyFordingImg = require ("./iChingImages/AlreadyFording.svg.png")
+const notYetFordingImg = require ("./iChingImages/NotYetFording.svg.png")
 
 
 const hexData = [
