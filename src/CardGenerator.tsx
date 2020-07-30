@@ -1,31 +1,15 @@
 import React from 'react';
 import hexData from "./hexagramData";
+import {Deck} from "./Deck";
 
-const CardGenerator = () => {
+type DeckProps = {
+    deck: Deck,
+    artist: String,
+}
 
-    const numberOfCards = 64;
+const CardGenerator = ({deck, artist}: DeckProps) => {
 
-    const getRandomCardIndex = (max: number) : number  => {
-        return Math.floor(Math.random() * max) // between 0 and (max -1)
-    }
-
-    const getCardTitle = (cardIndex: number) : string => {
-        return (
-            hexData[cardIndex].title
-        )
-    }
-
-    const getCardDescription = (cardIndex: number) : string  => {
-        return (
-            hexData[cardIndex].description
-        )
-    }
-
-    const getCardImage = (cardIndex: number) : string  => {
-        return (
-            hexData[cardIndex].image
-        )
-    }
+    const {numberOfCards, getRandomCardIndex, getCardTitle, getCardImage, getCardDescription} = deck;
 
     const chosenCardIndex = getRandomCardIndex(numberOfCards);
 
@@ -35,6 +19,8 @@ const CardGenerator = () => {
             <img src={getCardImage(chosenCardIndex)} className="hexagram" alt="hexagram" />
             <br />
             <a href={getCardDescription(chosenCardIndex)}>Read Details</a>
+
+            <p>By: {artist}</p>
         </div>
     )
 }
