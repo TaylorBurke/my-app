@@ -3,5 +3,5 @@ export interface Deck {
     getRandomCardIndex(max: number): number;
     getCardTitle(cardIndex: number): string;
     getCardDescription(cardIndex: number): string;
-    getCardImage(cardIndex: number): ImageBitmap;
+    getCardImage(cardIndex: number): string;
 }

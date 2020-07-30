@@ -1,7 +1,7 @@
 import React from 'react';
 import hexData from "./hexagramData";
 
-const IChingDeck = () => {
+const CardGenerator = () => {
 
     const numberOfCards = 64;
 
@@ -15,13 +15,13 @@ const IChingDeck = () => {
         )
     }
 
-    const getCardDescription= (cardIndex: number) : string  => {
+    const getCardDescription = (cardIndex: number) : string  => {
         return (
             hexData[cardIndex].description
         )
     }
 
-    const getCardImage= (cardIndex: number) : string  => {
+    const getCardImage = (cardIndex: number) : string  => {
         return (
             hexData[cardIndex].image
         )
@@ -39,4 +39,4 @@ const IChingDeck = () => {
     )
 }
 
-export default IChingDeck;
+export default CardGenerator;
