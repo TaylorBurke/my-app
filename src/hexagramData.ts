@@ -1,340 +1,408 @@
-import forceImg from "./images/Force.svg.png"
-import fieldImg from "./images/Field.svg.png"
-import sproutingImg from "./images/Sprouting.svg.png"
-import envelopingImg from "./images/Enveloping.svg.png"
-import attendingImg from "./images/Attending.svg.png"
-import arguingImg from "./images/Arguing.svg.png"
-import leadingImg from "./images/Leading.svg.png"
-import groupingImg from "./images/Grouping.svg.png"
-import smallAccumulatingImg from "./images/SmallAccumulating.svg.png"
-import treadingImg from "./images/Treading.svg.png"
-import pervadingImg from "./images/Pervading.svg.png"
-import obstructionImg from "./images/Obstruction.svg.png"
-import concordingPeopleImg from "./images/ConcordingPeople.svg.png"
-import greatPossessingImg from "./images/GreatPossessing.svg.png"
-import humblingImg from "./images/Humbling.svg.png"
-import providingForImg from "./images/Providing-For.svg.png"
-import followingImg from "./images/Following.svg.png"
-import correctingImg from "./images/Correcting.svg.png"
-import nearingImg from "./images/Nearing.svg.png"
-import viewingImg from "./images/Viewing.svg.png"
-import gnawingBiteImg from "./images/GnawingBite.svg.png"
-import adorningImg from "./images/Adorning.svg.png"
-import strippingImg from "./images/Stripping.svg.png"
-import returningImg from "./images/Returning.svg.png"
-import withoutEmbroilingImg from "./images/WithoutEmbroiling.svg.png"
-import greatAccumulatingImg from "./images/GreatAccumulating.svg.png"
-import swallowingImg from "./images/Swallowing.svg.png"
-import greatExceedingImg from "./images/GreatAccumulating.svg.png"
-import gorgeImg from "./images/Gorge.svg.png"
-import radianceImg from "./images/Radiance.svg.png"
-import conjoiningImg from "./images/Conjoining.svg.png"
-import perseveringImg from "./images/Persevering.svg.png"
-import retiringImg from "./images/Retiring.svg.png"
-import greatInvigoratingImg from "./images/GreatInvigorating.svg.png"
-import prosperingImg from "./images/Prospering.svg.png"
-import darkeningOfTheLightImg from "./images/DarkeningOfTheLight.svg.png"
-import dwellingPeopleImg from "./images/DwellingPeople.svg.png"
-import polarisingImg from "./images/Polarising.svg.png"
-import limpingImg from "./images/Limping.svg.png"
-import takingApartImg from "./images/Taking-Apart.svg.png"
-import diminishingImg from "./images/Diminishing.png"
-import augmentingImg from "./images/Augmenting.svg.png"
-import displacementImg from "./images/Displacement.svg.png"
-import couplingImg from "./images/Coupling.svg.png"
-import clusteringImg from "./images/Clustering.svg.png"
-import ascendingImg from "./images/Ascending.svg.png"
-import confiningImg from "./images/Confining.svg.png"
-import wellingImg from "./images/Welling.svg.png"
-import skinningImg from "./images/Skinning.svg.png"
-import holdingImg from "./images/Holding.svg.png"
-import shakeImg from "./images/Shake.svg.png"
-import boundImg from "./images/Bound.svg.png"
-import infiltratingImg from "./images/Infiltrating.svg.png"
-import convertingTheMaidenImg from "./images/ConvertingTheMaiden.svg.png"
-import aboundingImg from "./images/Abounding.svg.png"
-import sojourningImg from "./images/Sojourning.svg.png"
-import groundImg from "./images/Ground.svg.png"
-import openImg from "./images/Open.svg.png"
-import dispersingImg from "./images/Dispersing.svg.png"
-import articulatingImg from "./images/Articulating.svg.png"
-import centerReturningImg from "./images/CenterReturning.svg.png"
-import smallExceedingImg from "./images/SmallExceeding.svg.png"
-import alreadyFordingImg from "./images/AlreadyFording.svg.png"
-import notYetFordingImg from "./images/NotYetFording.svg.png"
+import forceImg from "./iChingImages/Force.svg.png"
+import fieldImg from "./iChingImages/Field.svg.png"
+import sproutingImg from "./iChingImages/Sprouting.svg.png"
+import envelopingImg from "./iChingImages/Enveloping.svg.png"
+import attendingImg from "./iChingImages/Attending.svg.png"
+import arguingImg from "./iChingImages/Arguing.svg.png"
+import leadingImg from "./iChingImages/Leading.svg.png"
+import groupingImg from "./iChingImages/Grouping.svg.png"
+import smallAccumulatingImg from "./iChingImages/SmallAccumulating.svg.png"
+import treadingImg from "./iChingImages/Treading.svg.png"
+import pervadingImg from "./iChingImages/Pervading.svg.png"
+import obstructionImg from "./iChingImages/Obstruction.svg.png"
+import concordingPeopleImg from "./iChingImages/ConcordingPeople.svg.png"
+import greatPossessingImg from "./iChingImages/GreatPossessing.svg.png"
+import humblingImg from "./iChingImages/Humbling.svg.png"
+import providingForImg from "./iChingImages/Providing-For.svg.png"
+import followingImg from "./iChingImages/Following.svg.png"
+import correctingImg from "./iChingImages/Correcting.svg.png"
+import nearingImg from "./iChingImages/Nearing.svg.png"
+import viewingImg from "./iChingImages/Viewing.svg.png"
+import gnawingBiteImg from "./iChingImages/GnawingBite.svg.png"
+import adorningImg from "./iChingImages/Adorning.svg.png"
+import strippingImg from "./iChingImages/Stripping.svg.png"
+import returningImg from "./iChingImages/Returning.svg.png"
+import withoutEmbroilingImg from "./iChingImages/WithoutEmbroiling.svg.png"
+import greatAccumulatingImg from "./iChingImages/GreatAccumulating.svg.png"
+import swallowingImg from "./iChingImages/Swallowing.svg.png"
+import greatExceedingImg from "./iChingImages/GreatAccumulating.svg.png"
+import gorgeImg from "./iChingImages/Gorge.svg.png"
+import radianceImg from "./iChingImages/Radiance.svg.png"
+import conjoiningImg from "./iChingImages/Conjoining.svg.png"
+import perseveringImg from "./iChingImages/Persevering.svg.png"
+import retiringImg from "./iChingImages/Retiring.svg.png"
+import greatInvigoratingImg from "./iChingImages/GreatInvigorating.svg.png"
+import prosperingImg from "./iChingImages/Prospering.svg.png"
+import darkeningOfTheLightImg from "./iChingImages/DarkeningOfTheLight.svg.png"
+import dwellingPeopleImg from "./iChingImages/DwellingPeople.svg.png"
+import polarisingImg from "./iChingImages/Polarising.svg.png"
+import limpingImg from "./iChingImages/Limping.svg.png"
+import takingApartImg from "./iChingImages/Taking-Apart.svg.png"
+import diminishingImg from "./iChingImages/Diminishing.png"
+import augmentingImg from "./iChingImages/Augmenting.svg.png"
+import displacementImg from "./iChingImages/Displacement.svg.png"
+import couplingImg from "./iChingImages/Coupling.svg.png"
+import clusteringImg from "./iChingImages/Clustering.svg.png"
+import ascendingImg from "./iChingImages/Ascending.svg.png"
+import confiningImg from "./iChingImages/Confining.svg.png"
+import wellingImg from "./iChingImages/Welling.svg.png"
+import skinningImg from "./iChingImages/Skinning.svg.png"
+import holdingImg from "./iChingImages/Holding.svg.png"
+import shakeImg from "./iChingImages/Shake.svg.png"
+import boundImg from "./iChingImages/Bound.svg.png"
+import infiltratingImg from "./iChingImages/Infiltrating.svg.png"
+import convertingTheMaidenImg from "./iChingImages/ConvertingTheMaiden.svg.png"
+import aboundingImg from "./iChingImages/Abounding.svg.png"
+import sojourningImg from "./iChingImages/Sojourning.svg.png"
+import groundImg from "./iChingImages/Ground.svg.png"
+import openImg from "./iChingImages/Open.svg.png"
+import dispersingImg from "./iChingImages/Dispersing.svg.png"
+import articulatingImg from "./iChingImages/Articulating.svg.png"
+import centerReturningImg from "./iChingImages/CenterReturning.svg.png"
+import smallExceedingImg from "./iChingImages/SmallExceeding.svg.png"
+import alreadyFordingImg from "./iChingImages/AlreadyFording.svg.png"
+import notYetFordingImg from "./iChingImages/NotYetFording.svg.png"
 
 
-const hexData = {
-    "Force" : {
+const hexData = [
+    {
+        title: "Force",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#1",
         image: forceImg
-
     },
-    "Field" : {
+    {
+        title: "Field",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#2",
         image: fieldImg
-
     },
-    "Sprouting" : {
+    {
+        title: "Sprouting",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#3",
         image: sproutingImg
-
     },
-    "Enveloping" : {
+    {
+        title: "Enveloping",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#4",
         image: envelopingImg
 
     },
-    "Attending" : {
+    {
+        title: "Attending",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#5",
         image: attendingImg
 
     },
-    "Arguing" : {
+    {
+        title: "Arguing",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#6",
         image: arguingImg
 
     },
-    "Leading" : {
+    {
+        title: "Leading",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#7",
         image: leadingImg
 
     },
-    "Grouping" : {
+    {
+        title: "Grouping",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#8",
         image: groupingImg
 
     },
-    "Small Accumulating" : {
+    {
+        title: "Small Accumulating",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#9",
         image: smallAccumulatingImg
 
     },
-
-    "Treading" : {
+    {
+        title: "Treading",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#10",
         image: treadingImg
 
     },
-    "Pervading" : {
+    {
+        title: "Pervading",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#11",
         image: pervadingImg
-
     },
-    "Obstruction" : {
+    {
+        title: "Obstruction",
+
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#12",
         image: obstructionImg
 
     },
-    "Concording People" : {
+    {
+        title: "Concording People",
+
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#13",
         image: concordingPeopleImg
     },
-    "Great Possessing" : {
+    {
+        title: "Great Possessing",
+
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#14",
         image: greatPossessingImg
     },
-    "Humbling" : {
+    {
+        title: "Humbling",
+
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#15",
         image: humblingImg
     },
-    "Providing-For" : {
+    {
+        title: "Providing-For",
+
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#16",
         image: providingForImg
     },
-    "Following" : {
+    {
+        title: "Following",
+
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#17",
         image: followingImg
     },
-    "Correcting" : {
+    {
+        title: "Correcting",
+
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#18",
         image: correctingImg
     },
-    "Nearing" : {
+    {
+        title: "Nearing",
+
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#19",
         image: nearingImg
     },
-    "Viewing" : {
+    {
+        title: "Viewing",
+
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#20",
         image: viewingImg
     },
-    "Gnawing Bite" : {
+    {
+        title: "Gnawing Bite",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#21",
         image: gnawingBiteImg
     },
-    "Adorning" : {
+    {
+        title: "Adorning",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#22",
         image: adorningImg
     },
-    "Stripping" : {
+    {
+        title: "Stripping",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#23",
         image: strippingImg
     },
-    "Returning" : {
+    {
+        title: "Returning",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#24",
         image: returningImg
     },
-    "Without Embroiling" : {
+    {
+        title: "Without Embroiling",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#25",
         image: withoutEmbroilingImg
     },
-    "Great Accumulating" : {
+    {
+        title: "Great Accumulating",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#26",
         image: greatAccumulatingImg
     },
-    "Swallowing" : {
+    {
+        title: "Swallowing",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#27",
         image: swallowingImg
     },
-    "Great Exceeding" : {
+    {
+        title: "Great Exceeding",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#28",
         image: greatExceedingImg
     },
-    "Gorge" : {
+    {
+        title: "Gorge",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#29",
         image: gorgeImg
     },
-    "Radiance" : {
+    {
+        title: "Radiance",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#30",
         image: radianceImg
     },
-    "Conjoining" : {
+    {
+        title: "Conjoining",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#31",
         image: conjoiningImg
     },
-    "Persevering" : {
+    {
+        title: "Persevering",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#32",
         image: perseveringImg
     },
-    "Retiring" : {
+    {
+        title: "Retiring",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#33",
         image: retiringImg
     },
-    "Great Invigorating" : {
+    {
+        title: "Great Invigorating",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#34",
         image: greatInvigoratingImg
     },
-    "Prospering" : {
+    {
+        title: "Prospering",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#35",
         image: prosperingImg
     },
-    "Darkening of the Light" : {
+    {
+        title: "Darkening of the Light",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#36",
         image: darkeningOfTheLightImg
     },
-    "Dwelling People" : {
+    {
+        title: "Dwelling People",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#37",
         image: dwellingPeopleImg
     },
-    "Polarising" : {
+    {
+        title: "Polarising",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#38",
         image: polarisingImg
     },
-    "Limping" : {
+    {
+        title: "Limping",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#39",
         image: limpingImg
     },
-    "Taking-Apart" : {
+    {
+        title: "Taking-Apart",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#40",
         image: takingApartImg
     },
-    "Diminishing" : {
+    {
+        title: "Diminishing",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#41",
         image: diminishingImg
     },
-    "Augmenting" : {
+    {
+        title: "Augmenting",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#42",
         image: augmentingImg
     },
-    "Displacement" : {
+    {
+        title: "Displacement",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#43",
         image: displacementImg
     },
-    "Coupling" : {
+    {
+        title: "Coupling",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#44",
         image: couplingImg
     },
-    "Clustering" : {
+    {
+        title: "Clustering",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#45",
         image: clusteringImg
     },
-    "Ascending" : {
+    {
+        title: "Ascending",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#46",
         image: ascendingImg
     },
-    "Confining" : {
+    {
+        title: "Confining",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#47",
         image: confiningImg
     },
-    "Welling" : {
+    {
+        title: "Welling",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#48",
         image: wellingImg
     },
-    "Skinning" : {
+    {
+        title: "Skinning",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#49",
         image: skinningImg
     },
-    "Holding" : {
+    {
+        title: "Holding",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#50",
         image: holdingImg
     },
-    "Shake" : {
+    {
+        title: "Shake",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#51",
         image: shakeImg
     },
-    "Bound" : {
+    {
+        title: "Bound",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#52",
         image: boundImg
     },
-    "Infiltrating" : {
+    {
+        title: "Infiltrating",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#53",
         image: infiltratingImg
     },
-    "Converting the Maiden" : {
+    {
+        title: "Converting the Maiden",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#54",
         image: convertingTheMaidenImg
     },
-    "Abounding" : {
+    {
+        title: "Abounding",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#55",
         image: aboundingImg
     },
-    "Sojourning" : {
+    {
+        title: "Sojourning",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#56",
         image: sojourningImg
     },
-    "Ground" : {
+    {
+        title: "Ground",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#57",
         image: groundImg
     },
-    "Open" : {
+    {
+        title: "Open",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#58",
         image: openImg
     },
-    "Dispersing" : {
+    {
+        title: "Dispersing",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#59",
         image: dispersingImg
     },
-    "Articulating" : {
+    {
+        title: "Articulating",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#60",
         image: articulatingImg
     },
-    "Center Returning" : {
+    {
+        title: "Center Returning",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#61",
         image: centerReturningImg
     },
-    "Small Exceeding" : {
+    {
+        title: "Small Exceeding",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#62",
         image: smallExceedingImg
     },
-    "Already Fording" : {
+    {
+        title: "Already Fording",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#63",
         image: alreadyFordingImg
     },
-    "Not Yet Fording" : {
+    {
+        title: "Not Yet Fording",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#64",
         image: notYetFordingImg
-    },
+    }
+]
 
-}
 
 export default hexData;
