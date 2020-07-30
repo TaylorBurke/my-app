@@ -86,43 +86,36 @@ const iChingCards : Card[] = [
         title: "Enveloping",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#4",
         image: envelopingImg
-
     },
     {
         title: "Attending",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#5",
         image: attendingImg
-
     },
     {
         title: "Arguing",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#6",
         image: arguingImg
-
     },
     {
         title: "Leading",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#7",
         image: leadingImg
-
     },
     {
         title: "Grouping",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#8",
         image: groupingImg
-
     },
     {
         title: "Small Accumulating",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#9",
         image: smallAccumulatingImg
-
     },
     {
         title: "Treading",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#10",
         image: treadingImg
-
     },
     {
         title: "Pervading",
@@ -131,38 +124,31 @@ const iChingCards : Card[] = [
     },
     {
         title: "Obstruction",
-
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#12",
         image: obstructionImg
-
     },
     {
         title: "Concording People",
-
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#13",
         image: concordingPeopleImg
     },
     {
         title: "Great Possessing",
-
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#14",
         image: greatPossessingImg
     },
     {
         title: "Humbling",
-
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#15",
         image: humblingImg
     },
     {
         title: "Providing-For",
-
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#16",
         image: providingForImg
     },
     {
         title: "Following",
-
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#17",
         image: followingImg
     },
@@ -174,13 +160,11 @@ const iChingCards : Card[] = [
     },
     {
         title: "Nearing",
-
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#19",
         image: nearingImg
     },
     {
         title: "Viewing",
-
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#20",
         image: viewingImg
     },
