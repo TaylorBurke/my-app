@@ -1,5 +1,5 @@
 import React from 'react';
-import hexData from "./hexagramData";
+import iChingCards from "./decks/iChing/iChingCards";
 import {Deck} from "./Deck";
 
 type DeckProps = {

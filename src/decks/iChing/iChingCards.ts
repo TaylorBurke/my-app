@@ -1,3 +1,5 @@
+import {Card} from "../../Card";
+
 const forceImg = require ("./iChingImages/Force.svg.png")
 const fieldImg = require ("./iChingImages/Field.svg.png")
 const sproutingImg = require ("./iChingImages/Sprouting.svg.png")
@@ -64,7 +66,7 @@ const alreadyFordingImg = require ("./iChingImages/AlreadyFording.svg.png")
 const notYetFordingImg = require ("./iChingImages/NotYetFording.svg.png")
 
 
-const hexData = [
+const iChingCards : Card[] = [
     {
         title: "Force",
         description: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#1",
@@ -405,4 +407,4 @@ const hexData = [
 ]
 
 
-export default hexData;
+export default iChingCards;

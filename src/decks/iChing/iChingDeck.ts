@@ -1,5 +1,5 @@
-import {Deck} from "./Deck";
-import hexData from "./hexagramData";
+import {Deck} from "../../Deck";
+import iChingCards from "./iChingCards";
 
 export const iChingDeck : Deck = {
     numberOfCards: 64,
@@ -7,12 +7,12 @@ export const iChingDeck : Deck = {
         return Math.floor(Math.random() * max) // between 0 and (max -1)
     },
     getCardTitle: (cardIndex) => {
-        return hexData[cardIndex].title
+        return iChingCards[cardIndex].title
     },
     getCardDescription: (cardIndex: number) => {
-        return hexData[cardIndex].description
+        return iChingCards[cardIndex].description
     },
     getCardImage: (cardIndex) => {
-        return hexData[cardIndex].image
+        return iChingCards[cardIndex].image
     },
 }
