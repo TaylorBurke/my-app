@@ -3,6 +3,7 @@ import iChingCards from "./iChingCards";
 
 export const iChingDeck : Deck = {
     numberOfCards: 64,
+    color: "gray",
     getRandomCardIndex: (max)=>{
         return Math.floor(Math.random() * max) // between 0 and (max -1)
     },

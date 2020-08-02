@@ -1,5 +1,4 @@
 import React from 'react';
-import iChingCards from "./decks/iChing/iChingCards";
 import {Deck} from "./Deck";
 
 type DeckProps = {
@@ -14,13 +13,13 @@ const CardGenerator = ({deck, artist}: DeckProps) => {
     const chosenCardIndex = getRandomCardIndex(numberOfCards);
 
     return (
-        <div>
+        <div style={{backgroundColor: deck.color}}>
             <h2>{getCardTitle(chosenCardIndex)}</h2>
-            <img src={getCardImage(chosenCardIndex)} className="hexagram" alt="hexagram" />
+            <img width="50" src={getCardImage(chosenCardIndex)} className="image" alt="" />
             <br />
             <a href={getCardDescription(chosenCardIndex)}>Read Details</a>
 
-            <p>By: {artist}</p>
+            {/* <p>By: {artist}</p> */}
         </div>
     )
 }

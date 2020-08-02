@@ -1,27 +1,35 @@
 import {Card} from "../../Card";
 
-const airImg = require('./fourDirectionsImages/air-symbol.svg.png') // alchemical element air
+const airImg = require('./fourDirectionsImages/air-symbol.svg.png')
+const fireImg = require('./fourDirectionsImages/fire-symbol.svg.png')
+const earthImg = require('./fourDirectionsImages/earth-symbol.svg.png')
+const waterImg = require('./fourDirectionsImages/water-symbol.svg.png')
+
 
 const fourDirectionsCards : Card[] = [
     {
       title: "East",
       description: "",
-      image: airImg
+      image: airImg,
+      color: "white"
     },
     {
       title: "South",
       description: "",
-      image: airImg
+      image: fireImg,
+      color: "red"
     },
     {
       title: "West",
       description: "",
-      image: airImg
+      image: earthImg,
+      color: "blue"
     },
     {
       title: "North",
       description: "",
-      image: airImg
+      image: waterImg,
+      color: "black"
     },
 
 ]
