@@ -11,25 +11,25 @@ const fourDirectionsCards : Card[] = [
       title: "East",
       description: "",
       image: airImg,
-      color: "white"
+      color: "orange"
     },
     {
       title: "South",
       description: "",
       image: fireImg,
-      color: "red"
+      color: "tomato"
     },
     {
       title: "West",
       description: "",
       image: earthImg,
-      color: "blue"
+      color: "dodgerBlue"
     },
     {
       title: "North",
       description: "",
       image: waterImg,
-      color: "black"
+      color: "mediumSeaGreen"
     },
 
 ]
