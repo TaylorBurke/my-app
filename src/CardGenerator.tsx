@@ -24,6 +24,10 @@ const theme = {
   
   const Border = styled.div`
     /* max-width: 300px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     margin: 10 auto;
     /* padding: 3; */
     background: ${theme.black};
@@ -42,11 +46,11 @@ const CardGenerator = ({deck, artist}: DeckProps) => {
             <br/>
             <StyledPage>
                 <Border>
-                    <div style={{boxShadow: `${theme.bs}`, padding: 12, margin: 4, backgroundColor: `${getCardColor(chosenCardIndex)}`, width: deck.width, height: deck.height}}>
-                        <p>{getCardTitle(chosenCardIndex)}</p>
-                        <img width={deck.imageWidth} src={getCardImage(chosenCardIndex)} className="image" alt="" />
-                        <br />
-                                                
+                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4, backgroundColor: `${getCardColor(chosenCardIndex)}`, width: deck.width, height: deck.height}}>
+                    <div style={{justifyContent: 'center', alignItems: 'center'}}>
+                            <p>{getCardTitle(chosenCardIndex)}</p>
+                            <img width={deck.imageWidth} src={getCardImage(chosenCardIndex)} className="image" alt="" />
+                        </div>
                         {/* <p>By: {artist}</p> */}
                     </div>
                 </Border>
