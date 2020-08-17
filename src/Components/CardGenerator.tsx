@@ -1,5 +1,5 @@
 import React from 'react';
-import {Deck} from "./Deck";
+import {Deck} from "../interface/Deck";
 import styled, { ThemeProvider } from 'styled-components';
 
 type DeckProps = {

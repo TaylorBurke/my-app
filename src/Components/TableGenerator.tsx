@@ -1,9 +1,9 @@
 import React from 'react';
-import {Deck} from "./Deck";
+import {Deck} from "../interface/Deck";
 import { ThemeProvider } from 'styled-components';
 import CardGenerator from './CardGenerator';
-import { fourDirectionsDeck } from './decks/fourDirections/fourDirectionsDeck';
-import { iChingDeck } from './decks/iChing/iChingDeck';
+import { fourDirectionsDeck } from '../decks/fourDirections/fourDirectionsDeck';
+import { iChingDeck } from '../decks/iChing/iChingDeck';
 
 type DeckProps = {
     deck: Deck,

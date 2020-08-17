@@ -1,4 +1,4 @@
-import {Deck} from "../../Deck";
+import {Deck} from "../../interface/Deck";
 import fourDirectionsCards from "./fourDirectionsCards";
 
 export const fourDirectionsDeck : Deck = {

@@ -1,4 +1,4 @@
-import {Deck} from "../../Deck";
+import {Deck} from "../../interface/Deck";
 import iChingCards from "./iChingCards";
 
 export const iChingDeck : Deck = {
