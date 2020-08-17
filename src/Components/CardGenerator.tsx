@@ -46,15 +46,17 @@ const CardGenerator = ({deck, artist}: DeckProps) => {
             <br/>
             <StyledPage>
                 <Border>
-                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4, backgroundColor: `${getCardColor(chosenCardIndex)}`, width: deck.width, height: deck.height}}>
+                    <div style={{display: 'flex', flexDirection: 'column',
+                        alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4,
+                        backgroundColor: `${getCardColor(chosenCardIndex)}`, width: deck.width, height: deck.height}}>
                     <div style={{justifyContent: 'center', alignItems: 'center'}}>
                             <p>{getCardTitle(chosenCardIndex)}</p>
                             <img width={deck.imageWidth} src={getCardImage(chosenCardIndex)} className="image" alt="" />
                         </div>
-                        {/* <p>By: {artist}</p> */}
+                         {/*<p>By: {artist}</p>*/}
                     </div>
                 </Border>
-                {/* <p>{getCardDescription(chosenCardIndex)}</p> */}
+                 {/*<p>{getCardDescription(chosenCardIndex)}</p>*/}
             </StyledPage>
         </ThemeProvider>
     )

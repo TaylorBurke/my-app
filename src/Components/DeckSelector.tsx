@@ -2,8 +2,13 @@ import React from 'react';
 import {MyContext} from "./MyProvider";
 
 
+const handleChange = () => {
+
+}
 
 class DeckSelector extends React.Component {
+
+
     render(){
         return (
             <MyContext.Consumer>
@@ -12,7 +17,7 @@ class DeckSelector extends React.Component {
                         {context.state.allDecks.map((e)=>{
                             return (
                                 <div>
-                                    <input type={"checkbox"} name={e.name}/>
+                                    <input onChange={()=>handleChange()} type={"checkbox"} name={e.name}/>
                                     {e.name}
                                 </div>
                             )

@@ -19,13 +19,13 @@ const theme = {
     maxWidth: '1000px',
     bs: '0 12px 24px 0 rgba(0, 0, 0, 0.5)',
   };
-  
+
 
 const TableGenerator = ({deck, artist}: DeckProps) => {
 
     return (
         <ThemeProvider theme={theme}>
-            <CardGenerator deck={fourDirectionsDeck} artist={"Twillyb"} />
+            <CardGenerator  deck={fourDirectionsDeck} artist={"Twillyb"} />
             <CardGenerator deck={iChingDeck} artist={"Zhou yi"} />
         </ThemeProvider>
     )
