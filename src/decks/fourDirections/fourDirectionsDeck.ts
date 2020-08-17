@@ -2,6 +2,7 @@ import {Deck} from "../../interface/Deck";
 import fourDirectionsCards from "./fourDirectionsCards";
 
 export const fourDirectionsDeck : Deck = {
+    name: "Four Directions",
     numberOfCards: 4,
     imageWidth: 100,
     width: 200,

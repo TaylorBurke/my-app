@@ -1,4 +1,5 @@
 export interface Deck {
+    name: string;
     numberOfCards: number;
     imageWidth: number,
     width: number,

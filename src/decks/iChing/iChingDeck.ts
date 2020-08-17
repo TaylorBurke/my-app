@@ -2,6 +2,7 @@ import {Deck} from "../../interface/Deck";
 import iChingCards from "./iChingCards";
 
 export const iChingDeck : Deck = {
+    name: "iChing",
     numberOfCards: 64,
     imageWidth: 100,
     width: 200,

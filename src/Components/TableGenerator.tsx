@@ -25,7 +25,7 @@ const TableGenerator = ({deck, artist}: DeckProps) => {
 
     return (
         <ThemeProvider theme={theme}>
-            <CardGenerator  deck={fourDirectionsDeck} artist={"Twillyb"} />
+            <CardGenerator deck={fourDirectionsDeck} artist={"Twillyb"} />
             <CardGenerator deck={iChingDeck} artist={"Zhou yi"} />
         </ThemeProvider>
     )
