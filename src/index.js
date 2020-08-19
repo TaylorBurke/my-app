@@ -4,10 +4,22 @@ import './index.css';
 import App from './Components/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
+import { Provider } from 'react-redux';
+import {combineReducers, createStore} from ' redux';
+import decksReducer from './reducers';
+
+const rootReducer = combineReducers({
+    decksReducer
+})
+const store = createStore(rootReducer)
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter><App /></BrowserRouter>
+    <BrowserRouter>
+        <Provider store ={store}>
+            <App/>
+        </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
