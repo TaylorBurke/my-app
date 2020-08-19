@@ -8,6 +8,7 @@ export const iChingDeck : Deck = {
     width: 200,
     height: 300,
     color: "gray",
+    getAllCards: ()=> iChingCards,
     getRandomCardIndex: (max)=>{
         return Math.floor(Math.random() * max) // between 0 and (max -1)
     },

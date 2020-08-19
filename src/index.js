@@ -5,12 +5,10 @@ import App from './Components/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { Provider } from 'react-redux';
-import {combineReducers, createStore} from ' redux';
-import decksReducer from './reducers';
+import { createStore } from 'redux';
+import { rootReducer } from './redux/reducers';
 
-const rootReducer = combineReducers({
-    decksReducer
-})
+
 const store = createStore(rootReducer)
 
 ReactDOM.render(

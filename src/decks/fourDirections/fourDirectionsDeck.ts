@@ -8,6 +8,7 @@ export const fourDirectionsDeck : Deck = {
     width: 200,
     height: 250,
     color: "yellow",
+    getAllCards: ()=> fourDirectionsCards,
     getRandomCardIndex: (max)=>{
         return Math.floor(Math.random() * max) // between 0 and (max -1)
     },

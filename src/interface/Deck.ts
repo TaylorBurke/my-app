@@ -1,3 +1,5 @@
+import {Card} from "./Card";
+
 export interface Deck {
     name: string;
     numberOfCards: number;
@@ -5,6 +7,7 @@ export interface Deck {
     width: number,
     height: number,
     color: string;
+    getAllCards(): Card[];
     getRandomCardIndex(max: number): number;
     getCardTitle(cardIndex: number): string;
     getCardColor(cardIndex: number): string;
