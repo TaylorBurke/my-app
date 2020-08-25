@@ -1,4 +1,4 @@
-import {Deck} from "../../interface/Deck";
+import {Deck} from "../../interface/Deck/Deck";
 import fourDirectionsCards from "./fourDirectionsCards";
 
 export const fourDirectionsDeck : Deck = {
@@ -24,4 +24,8 @@ export const fourDirectionsDeck : Deck = {
     getCardImage: (cardIndex) => {
         return fourDirectionsCards[cardIndex].image
     },
+    deckState: {
+        remainingCards: fourDirectionsCards,
+        pulledCards: []
+    }
 }

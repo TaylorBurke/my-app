@@ -1,4 +1,4 @@
-import {Card} from "../../interface/Card";
+import {Card} from "../../interface/Deck/Card";
 
 const airImg = require('./fourDirectionsImages/air-symbol.svg.png')
 const fireImg = require('./fourDirectionsImages/fire-symbol.svg.png')

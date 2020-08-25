@@ -1,4 +1,4 @@
-import {Card} from "../../interface/Card";
+import {Card} from "../../interface/Deck/Card";
 
 const forceImg = require ("./iChingImages/Force.svg.png")
 const fieldImg = require ("./iChingImages/Field.svg.png")

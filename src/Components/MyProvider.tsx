@@ -1,7 +1,7 @@
 import React from "react";
 import { fourDirectionsDeck } from '../decks/fourDirections/fourDirectionsDeck';
 import { iChingDeck } from '../decks/iChing/iChingDeck';
-import {Deck} from "../interface/Deck";
+import {Deck} from "../interface/Deck/Deck";
 
 export const MyContext = React.createContext<ContextType>({state:
         {

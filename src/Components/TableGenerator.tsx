@@ -1,5 +1,5 @@
 import React from 'react';
-import {Deck} from "../interface/Deck";
+import {Deck} from "../interface/Deck/Deck";
 import { ThemeProvider } from 'styled-components';
 import CardGenerator from './CardGenerator';
 import { fourDirectionsDeck } from '../decks/fourDirections/fourDirectionsDeck';

@@ -1,4 +1,5 @@
 import {Card} from "./Card";
+import {DeckState} from "./DeckState";
 
 export interface Deck {
     name: string;
@@ -13,4 +14,5 @@ export interface Deck {
     getCardColor(cardIndex: number): string;
     getCardDescription(cardIndex: number): string;
     getCardImage(cardIndex: number): string;
+    deckState: DeckState;
 }

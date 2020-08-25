@@ -1,6 +1,6 @@
 import {Card} from "./Card";
 
 export interface DeckState {
-    remainingCards: Card[]
-    pulledCards: Card[]
+    remainingCards: Card[];
+    pulledCards: Card[];
 }

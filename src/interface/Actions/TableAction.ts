@@ -1,4 +1,4 @@
-import {TableState} from "./TableState";
+import {TableState} from "../Table/TableState";
 
 export interface TableAction {
     type: string
