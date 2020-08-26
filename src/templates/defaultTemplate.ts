@@ -11,12 +11,6 @@ export const defaultTemplate : Template = {
                 populated: false,
                 faceDown: true,
             },
-            {
-                number: 2,
-                name: "Today's Card",
-                populated: false,
-                faceDown: true,
-            }
         ]
     }
 };

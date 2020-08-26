@@ -41,10 +41,11 @@ const SlotGenerator = ({slot}: SlotProps) => {
         <ThemeProvider theme={theme}>
             <br/>
             <StyledPage>
+                <p>{slot.name}</p>
                 <Border>
                     <div id={`${number}`} style={{display: 'flex', flexDirection: 'column',
                         alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4}}>
-                        <div style={{justifyContent: 'center', alignItems: 'center', width: '200', height: '300'}}>
+                        <div style={{justifyContent: 'center', alignItems: 'center', width: 200, height: 300}}>
                         </div>
                         {/*<p>By: {artist}</p>*/}
                     </div>

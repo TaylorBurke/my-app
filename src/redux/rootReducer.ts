@@ -10,6 +10,7 @@ import {Deck} from "../interface/Deck/Deck";
 import {fourDirectionsDeck} from '../decks/fourDirections/fourDirectionsDeck'
 import {iChingDeck} from "../decks/iChing/iChingDeck";
 import {tableReducer} from "./tableReducer";
+import {RootState} from "../interface/RootState";
 
 
 const allDecks : Deck[] = [fourDirectionsDeck, iChingDeck];
@@ -31,6 +32,17 @@ const appReducer = (app: AppState = initialApp, action : AppAction) => {
             return action.payload;
         default:
             return app;
+    }
+}
+
+export function getAppState (state : RootState){
+    const {
+        templates,
+        decks
+    } = state.app;
+    return {
+        templates,
+        decks
     }
 }
 
