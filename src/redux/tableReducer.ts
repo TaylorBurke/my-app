@@ -11,15 +11,21 @@ export const startingTable : TableState = {
     isClean: true,
 };
 
-const SELECT_DECK = 'SELECT_DECK';
-const SELECT_TEMPLATE = 'SELECT_TEMPLATE';
-const CLEAN_TABLE = "CLEAN_TABLE";
-const PULL_CARD = "PULL_CARD";
-const FLIP_CARD = "FLIP_CARD";
+const SELECT_DECK = 'SELECT_DECK'; // selects a deck to be used
+const STAGE_DECK = 'STAGE_DECK'; // moves a deck onto the table
+const UNSTAGE_DECK = 'UNSTAGE_DECK'; // removes a deck from the table
+const SELECT_TEMPLATE = 'SELECT_TEMPLATE'; // choose a template to use for the table
+const CLEAN_TABLE = "CLEAN_TABLE"; // clear all slots and reset all deck states (template and staged decks are not changed)
+const PULL_CARD = "PULL_CARD"; // move a card from the selected deck into the next slot, to remain face down
+const FLIP_CARD = "FLIP_CARD"; // change the face up status of the current slot
 
 export const tableReducer = (table: TableState = startingTable, action: TableAction) => {
     switch (action.type) {
         case SELECT_DECK:
+            return action.payload;
+        case STAGE_DECK:
+            return action.payload;
+        case UNSTAGE_DECK:
             return action.payload;
         case SELECT_TEMPLATE:
             return action.payload;

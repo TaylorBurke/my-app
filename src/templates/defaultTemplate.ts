@@ -10,6 +10,12 @@ export const defaultTemplate : Template = {
                 name: "Today's Card",
                 populated: false,
                 faceDown: true,
+            },
+            {
+                number: 2,
+                name: "Today's Card",
+                populated: false,
+                faceDown: true,
             }
         ]
     }

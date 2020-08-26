@@ -4,15 +4,12 @@ import { ThemeProvider } from 'styled-components';
 import CardGenerator from './CardGenerator';
 import { fourDirectionsDeck } from '../decks/fourDirections/fourDirectionsDeck';
 import { iChingDeck } from '../decks/iChing/iChingDeck';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import {getTableState} from "../redux/tableReducer";
 import {RootState} from "../interface/RootState";
 import {TableState} from "../interface/Table/TableState";
+import SlotGenerator from "./SlotGenerator";
 
-type DeckProps = {
-    deck: Deck,
-    artist: String,
-}
 
 const theme = {
     red: '#FF0000',
@@ -26,13 +23,21 @@ const theme = {
 
 
 const TableGenerator = (props : TableState) => {
+// need a helper function to implement the template
 
+    const initializeTable = () => {
+        // get the template and create a "blank" for each slot
+
+
+    }
 
     return (
         <ThemeProvider theme={theme}>
 
             {/*read the store and then dynamically generate the layout*/}
 
+
+            {props.selectedTemplate.templateState.slots.map((s)=> (<SlotGenerator slot={s} />))}
             {props.selectedDecks.map((deck)=>{
                 return <CardGenerator  deck={deck}/>
             }) }
