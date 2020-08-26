@@ -4,7 +4,6 @@ import styled, { ThemeProvider } from 'styled-components';
 
 type DeckProps = {
     deck: Deck,
-    artist: String,
 }
 
 const theme = {
@@ -35,7 +34,7 @@ const theme = {
   `;
 
 
-const CardGenerator = ({deck, artist}: DeckProps) => {
+const CardGenerator = ({deck}: DeckProps) => {
 
     const {numberOfCards, getRandomCardIndex, getCardTitle, getCardColor, getCardImage, getCardDescription} = deck;
 

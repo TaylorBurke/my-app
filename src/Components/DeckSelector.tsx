@@ -1,32 +1,22 @@
 import React from 'react';
-import {MyContext} from "./MyProvider";
 
 
 const handleChange = () => {
 
 }
 
-class DeckSelector extends React.Component {
+const DeckSelector = () => {
 
 
-    render(){
-        return (
-            <MyContext.Consumer>
-                {(context)=> (
-                    <React.Fragment>
-                        {context.state.allDecks.map((e)=>{
-                            return (
-                                <div>
-                                    <input onChange={()=>handleChange()} type={"checkbox"} name={e.name}/>
-                                    {e.name}
-                                </div>
-                            )
-                        })}
-                    </React.Fragment>
-                )}
-            </MyContext.Consumer>
-        )
-    }
+    return (
+        <div>
+              {/*map through each deck and return a checkbox */}
+            {/*<input onChange={() => handleChange()} type={"checkbox"} name={e.name}/>*/}
+            {/*{e.name}*/}
+        </div>
+    )
+
+
 }
 
 export default DeckSelector;

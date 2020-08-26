@@ -4,6 +4,10 @@ import { ThemeProvider } from 'styled-components';
 import CardGenerator from './CardGenerator';
 import { fourDirectionsDeck } from '../decks/fourDirections/fourDirectionsDeck';
 import { iChingDeck } from '../decks/iChing/iChingDeck';
+import {connect} from "react-redux";
+import {getTableState} from "../redux/tableReducer";
+import {RootState} from "../interface/RootState";
+import {TableState} from "../interface/Table/TableState";
 
 type DeckProps = {
     deck: Deck,
@@ -21,14 +25,35 @@ const theme = {
   };
 
 
-const TableGenerator = ({deck, artist}: DeckProps) => {
+const TableGenerator = (props : TableState) => {
+
 
     return (
         <ThemeProvider theme={theme}>
-            <CardGenerator  deck={fourDirectionsDeck} artist={"Twillyb"} />
-            <CardGenerator deck={iChingDeck} artist={"Zhou yi"} />
+
+            {/*read the store and then dynamically generate the layout*/}
+
+            {props.selectedDecks.map((deck)=>{
+                return <CardGenerator  deck={deck}/>
+            }) }
+
         </ThemeProvider>
     )
 }
 
-export default TableGenerator;
+function mapStateToProps(state : RootState) {
+    const {
+        selectedDecks,
+        selectedTemplate,
+        isClean
+    } = getTableState(state);
+    return {
+        selectedDecks,
+        selectedTemplate,
+        isClean
+    };
+}
+
+export const connectedTableGenerator = connect(mapStateToProps)(TableGenerator)
+
+export default connectedTableGenerator;

@@ -7,6 +7,7 @@ const Nav = () => {
             <div>
                 <Link to="/"> Home </Link>
                 <Link to="/ds"> Decks </Link>
+                <Link to="/tm"> Templates </Link>
             </div>
         </div>
     )

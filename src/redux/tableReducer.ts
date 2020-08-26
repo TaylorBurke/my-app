@@ -2,9 +2,11 @@ import {TableState} from "../interface/Table/TableState";
 import {TableAction} from "../interface/Actions/TableAction";
 import {fourDirectionsDeck} from "../decks/fourDirections/fourDirectionsDeck";
 import {defaultTemplate} from "../templates/defaultTemplate";
+import {RootState} from "../interface/RootState";
+import {iChingDeck} from "../decks/iChing/iChingDeck";
 
 export const startingTable : TableState = {
-    selectedDecks: [fourDirectionsDeck],
+    selectedDecks: [fourDirectionsDeck, iChingDeck],
     selectedTemplate: defaultTemplate,
     isClean: true,
 };
@@ -29,5 +31,18 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
             return action.payload;
         default:
             return table;
+    }
+}
+
+export function getTableState(state : RootState){
+    const {
+        selectedDecks,
+        selectedTemplate,
+        isClean,
+    } = state.table;
+    return {
+        selectedDecks,
+        selectedTemplate,
+        isClean,
     }
 }

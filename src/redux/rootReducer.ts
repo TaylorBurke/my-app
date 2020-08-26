@@ -25,15 +25,15 @@ const initialApp : AppState = {
 
 const NEW_TEMPLATE = 'NEW_TEMPLATE';
 
-const appReducer = (state: AppState = initialApp, action : AppAction) => {
+const appReducer = (app: AppState = initialApp, action : AppAction) => {
     switch(action.type){
         case NEW_TEMPLATE:
             return action.payload;
         default:
-            return state;
+            return app;
     }
 }
 
 export const rootReducer = combineReducers({
-    tableReducer, appReducer
+    table: tableReducer, app: appReducer
 })

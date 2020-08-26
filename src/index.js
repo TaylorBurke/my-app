@@ -3,23 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Components/App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { rootReducer } from './redux/rootReducer';
+import {BrowserRouter} from 'react-router-dom/cjs/react-router-dom.min';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import {rootReducer} from './redux/rootReducer';
 
 
 const store = createStore(rootReducer)
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-        <Provider store ={store}>
-            <App/>
+    <React.StrictMode>
+        <Provider store={store}>
+            <BrowserRouter>
+                <App/>
+            </BrowserRouter>
         </Provider>
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
