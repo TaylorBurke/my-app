@@ -7,7 +7,7 @@ export const fourDirectionsDeck : Deck = {
     imageWidth: 100,
     width: 200,
     height: 250,
-    color: "yellow",
+    color: "#823e0e",
     getAllCards: ()=> fourDirectionsCards,
     getRandomCardIndex: (max)=>{
         return Math.floor(Math.random() * max) // between 0 and (max -1)

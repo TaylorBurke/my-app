@@ -9,6 +9,7 @@ import {getTableState} from "../redux/tableReducer";
 import {RootState} from "../interface/RootState";
 import {TableState} from "../interface/Table/TableState";
 import SlotGenerator from "./SlotGenerator";
+import DeckGenerator from './DeckGenerator';
 
 
 const theme = {
@@ -35,8 +36,7 @@ const TableGenerator = (props : TableState) => {
         <ThemeProvider theme={theme}>
 
             {/*read the store and then dynamically generate the layout*/}
-
-
+            {props.selectedDecks.map(d=>(<DeckGenerator deck={d}/>))}
             {props.selectedTemplate.templateState.slots.map((s)=> (<SlotGenerator slot={s} />))}
             {props.selectedDecks.map((deck)=>{
                 return <CardGenerator  deck={deck}/>

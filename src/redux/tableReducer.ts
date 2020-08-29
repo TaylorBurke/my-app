@@ -7,13 +7,14 @@ import {iChingDeck} from "../decks/iChing/iChingDeck";
 
 export const startingTable : TableState = {
     selectedDecks: [fourDirectionsDeck, iChingDeck],
+    stagedDeck: fourDirectionsDeck,
     selectedTemplate: defaultTemplate,
     isClean: true,
 };
 
-const SELECT_DECK = 'SELECT_DECK'; // selects a deck to be used
-const STAGE_DECK = 'STAGE_DECK'; // moves a deck onto the table
-const UNSTAGE_DECK = 'UNSTAGE_DECK'; // removes a deck from the table
+const SELECT_DECK = 'SELECT_DECK'; // moves a deck onto the table
+const DESELECT_DECK = 'DESELECT_DECK'; // removes a deck from the table
+const STAGE_DECK = 'STAGE_DECK'; // next card will be pulled from the staged deck
 const SELECT_TEMPLATE = 'SELECT_TEMPLATE'; // choose a template to use for the table
 const CLEAN_TABLE = "CLEAN_TABLE"; // clear all slots and reset all deck states (template and staged decks are not changed)
 const PULL_CARD = "PULL_CARD"; // move a card from the selected deck into the next slot, to remain face down
@@ -23,9 +24,9 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
     switch (action.type) {
         case SELECT_DECK:
             return action.payload;
-        case STAGE_DECK:
+        case DESELECT_DECK:
             return action.payload;
-        case UNSTAGE_DECK:
+        case STAGE_DECK:
             return action.payload;
         case SELECT_TEMPLATE:
             return action.payload;
