@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 
 type DeckProps = {
     deck: Deck,
+    isStaged: boolean,
 }
 
 const theme = {
@@ -18,7 +19,6 @@ const theme = {
   
   const StyledPage = styled.div`
     /* margin: 230; */
-    background: ${props => props.theme.black};
   `;
   
   const Border = styled.div`
@@ -29,22 +29,24 @@ const theme = {
     align-items: center;
     margin: 10 auto;
     /* padding: 3; */
-    background: ${theme.black};
     padding: 10;
   `;
 
 
-const DeckGenerator = ({deck}: DeckProps) => {
+const DeckGenerator = ({deck, isStaged}: DeckProps) => {
+
+    const boxShadow = isStaged ? theme.bs : "";
 
     return (
         <ThemeProvider theme={theme}>
             <br/>
             <StyledPage>
+                <div style={{height: 80}}/>
                 <Border>
                     <div style={{display: 'flex', flexDirection: 'column',
-                        alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4,
-                        backgroundColor: `${deck.color}`, width: deck.width, height: deck.height}}>
-                    <div style={{justifyContent: 'center', alignItems: 'center', width: deck.width/2, height: deck.height/2}}>
+                        alignItems: 'center', boxShadow: `${boxShadow}`, padding: 6, margin: 43, backgroundColor: `${theme.black}`
+                        }}>
+                    <div style={{backgroundColor: `${deck.color}`, justifyContent: 'center', alignItems: 'center', width: deck.width/2, height: deck.height/2}}>
                         </div>
                     </div>
                 </Border>

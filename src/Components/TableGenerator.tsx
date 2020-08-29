@@ -1,15 +1,12 @@
 import React from 'react';
-import {Deck} from "../interface/Deck/Deck";
 import { ThemeProvider } from 'styled-components';
 import CardGenerator from './CardGenerator';
-import { fourDirectionsDeck } from '../decks/fourDirections/fourDirectionsDeck';
-import { iChingDeck } from '../decks/iChing/iChingDeck';
 import {connect} from 'react-redux';
 import {getTableState} from "../redux/tableReducer";
 import {RootState} from "../interface/RootState";
 import {TableState} from "../interface/Table/TableState";
 import SlotGenerator from "./SlotGenerator";
-import DeckGenerator from './DeckGenerator';
+import DeckPresenter from "./DeckPresenter";
 
 
 const theme = {
@@ -26,9 +23,10 @@ const theme = {
 const TableGenerator = (props : TableState) => {
 // need a helper function to implement the template
 
+    const {stagedDeck, selectedDecks} = props;
+
     const initializeTable = () => {
         // get the template and create a "blank" for each slot
-
 
     }
 
@@ -36,11 +34,12 @@ const TableGenerator = (props : TableState) => {
         <ThemeProvider theme={theme}>
 
             {/*read the store and then dynamically generate the layout*/}
-            {props.selectedDecks.map(d=>(<DeckGenerator deck={d}/>))}
+            {/*{props.selectedDecks.map(d=>(<DeckGenerator deck={d}/>))}*/}
+            <DeckPresenter stagedDeck={stagedDeck.name} selectedDecks={selectedDecks} />
             {props.selectedTemplate.templateState.slots.map((s)=> (<SlotGenerator slot={s} />))}
-            {props.selectedDecks.map((deck)=>{
-                return <CardGenerator  deck={deck}/>
-            }) }
+            {props.selectedDecks.map((deck)=> {
+                return <CardGenerator deck={deck}/>
+            })}
 
         </ThemeProvider>
     )
@@ -50,12 +49,14 @@ function mapStateToProps(state : RootState) {
     const {
         selectedDecks,
         selectedTemplate,
-        isClean
+        isClean,
+        stagedDeck,
     } = getTableState(state);
     return {
         selectedDecks,
         selectedTemplate,
-        isClean
+        isClean,
+        stagedDeck,
     };
 }
 

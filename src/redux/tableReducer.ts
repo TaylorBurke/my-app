@@ -46,10 +46,12 @@ export function getTableState(state : RootState){
         selectedDecks,
         selectedTemplate,
         isClean,
+        stagedDeck,
     } = state.table;
     return {
         selectedDecks,
         selectedTemplate,
         isClean,
+        stagedDeck,
     }
 }
