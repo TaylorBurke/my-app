@@ -4,9 +4,10 @@ import CardGenerator from './CardGenerator';
 import {connect} from 'react-redux';
 import {getTableState} from "../redux/tableReducer";
 import {RootState} from "../interface/RootState";
-import {TableState} from "../interface/Table/TableState";
 import SlotGenerator from "./SlotGenerator";
 import DeckPresenter from "./DeckPresenter";
+import {Deck} from "../interface/Deck/Deck";
+import {Template} from "../interface/Template/Template";
 
 
 const theme = {
@@ -19,25 +20,26 @@ const theme = {
     bs: '0 12px 24px 0 rgba(0, 0, 0, 0.05)',
   };
 
+type TableGeneratorProps = {
+    selectedDecks: Deck[];
+    stagedDeck: Deck;
+    selectedTemplate: Template;
+    isClean: boolean;
+}
 
-const TableGenerator = (props : TableState) => {
+
+const TableGenerator = (props : TableGeneratorProps) => {
 // need a helper function to implement the template
 
-    const {stagedDeck, selectedDecks} = props;
+    const {stagedDeck, selectedDecks, selectedTemplate} = props;
 
-    const initializeTable = () => {
-        // get the template and create a "blank" for each slot
-
-    }
 
     return (
         <ThemeProvider theme={theme}>
 
-            {/*read the store and then dynamically generate the layout*/}
-            {/*{props.selectedDecks.map(d=>(<DeckGenerator deck={d}/>))}*/}
-            <DeckPresenter stagedDeck={stagedDeck.name} selectedDecks={selectedDecks} />
-            {props.selectedTemplate.templateState.slots.map((s)=> (<SlotGenerator slot={s} />))}
-            {props.selectedDecks.map((deck)=> {
+            <DeckPresenter props={{selectedDecks, stagedDeck}} />
+            {selectedTemplate.templateState.slots.map((s)=> (<SlotGenerator slot={s} />))}
+            {selectedDecks.map((deck)=> {
                 return <CardGenerator deck={deck}/>
             })}
 

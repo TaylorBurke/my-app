@@ -36,7 +36,7 @@ const theme = {
 
 const CardGenerator = ({deck}: DeckProps) => {
 
-    const {numberOfCards, getRandomCardIndex, getCardTitle, getCardColor, getCardImage, getCardDescription} = deck;
+    const {numberOfCards, getRandomCardIndex, getCardTitle, getCardColor, getCardImage} = deck;
 
     const chosenCardIndex = getRandomCardIndex(numberOfCards);
 

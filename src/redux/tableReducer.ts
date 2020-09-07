@@ -27,7 +27,14 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
         case DESELECT_DECK:
             return action.payload;
         case STAGE_DECK:
-            return action.payload;
+            console.log({
+                ...table,
+                stagedDeck: action.payload
+            })
+            return {
+                ...table,
+                stagedDeck: action.payload
+            };
         case SELECT_TEMPLATE:
             return action.payload;
         case CLEAN_TABLE:

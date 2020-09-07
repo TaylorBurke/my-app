@@ -1,42 +1,34 @@
 import DeckGenerator from "./DeckGenerator";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Deck} from "../interface/Deck/Deck";
-import {Action, Store, Dispatch} from "redux";
+import {Action, Dispatch} from "redux";
 import {connect} from "react-redux";
+import {RootState} from "../interface/RootState";
+import {getTableState} from "../redux/tableReducer";
 
 type DeckPresenterProps = {
-    selectedDecks: Deck[];
-    stagedDeck: string;
-    // dispatch: Dispatch;
+    props: {
+        selectedDecks: Deck[],
+        stagedDeck: Deck
+    }
+        dispatch?: ConnectedDispatch
 }
 
-const DeckPresenter = ({selectedDecks, stagedDeck} : DeckPresenterProps) => {
+const DeckPresenter = ({props, dispatch} : DeckPresenterProps) => {
 
-    const handleClick = (deck : Deck) => {
-        alert("D")
-    }
-
-    const [padding, setPadding] = useState(22);
-
-    useEffect(()=>{
-alert(`${padding}`)
-    }, [padding])
-
-    let hoverToggle = false;
-    const onHover = () => {
-        setPadding(padding+1)
-    }
-
-
+    const {selectedDecks, stagedDeck} = props;
 
     return (
         <div style={{display: 'flex', flexDirection: 'row'}}>
             {selectedDecks.map(d=>{
                 return (
-                    // the hover effects need to be moved to the dg component
-                    <div style={{marginTop: `${padding}`}} onMouseEnter={(e)=>onHover()} onClick={(e)=>handleClick(d)}>
-                        <DeckGenerator isStaged={stagedDeck == d.name} deck={d}/>
+                    <div onClick={(e)=>{
+                        e.preventDefault();
+                        return dispatch?.stageDeck(d)
+                    }}>
+                        <DeckGenerator isStaged={stagedDeck === d} deck={d}/>
                     </div>
+
                     )})
             }
         </div>
@@ -47,12 +39,23 @@ interface ConnectedDispatch {
     stageDeck: (deck: Deck) => Action;
 }
 
+function mapStateToProps(state : RootState) {
+    const {
+        selectedDecks,
+        stagedDeck,
+    } = getTableState(state);
+    return {
+        selectedDecks,
+        stagedDeck,
+    };
+}
+
 const mapDispatchToProps = (dispatch: Dispatch) : ConnectedDispatch => {
     return {
-        stageDeck: (deck: Deck) => dispatch(stageDeck(deck))
+        stageDeck: (deck: Deck) => dispatch({type: 'STAGE_DECK', payload:deck})
     }
 };
 
 // map dispatch to props
-const connectedDeckPresenter = connect(null, mapDispatchToProps)(DeckPresenter);
+const connectedDeckPresenter = connect(mapStateToProps, mapDispatchToProps)(DeckPresenter);
 export default connectedDeckPresenter;
