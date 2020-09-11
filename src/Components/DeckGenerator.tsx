@@ -44,12 +44,14 @@ const DeckGenerator = ({deck, isStaged}: DeckProps) => {
             <br/>
             <StyledPage>
                 <div style={{height: `${80}`}}/>
+
                 <Border>
                     <div style={{display: 'flex', flexDirection: 'column',
                         alignItems: 'center', boxShadow: `${boxShadow}`, padding: 5, margin: 43, backgroundColor: `${theme.black}`
                         }}>
                     <div style={{backgroundColor: `${deck.color}`, justifyContent: 'center', alignItems: 'center', width: deck.width/2, height: deck.height/2}}>
-                        </div>
+                        <p style={{fontSize:"70%"}}>{deck.name}</p>
+                    </div>
                     </div>
                 </Border>
             </StyledPage>
