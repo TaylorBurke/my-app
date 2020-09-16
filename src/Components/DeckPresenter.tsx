@@ -11,10 +11,10 @@ type DeckPresenterProps = {
         selectedDecks: Deck[],
         stagedDeck: Deck
     }
-        dispatch?: ConnectedDispatch
+        stageDeck: any
 }
 
-const DeckPresenter = ({props, dispatch} : DeckPresenterProps) => {
+const DeckPresenter = ({props, stageDeck} : DeckPresenterProps) => {
 
     const {selectedDecks, stagedDeck} = props;
 
@@ -22,10 +22,7 @@ const DeckPresenter = ({props, dispatch} : DeckPresenterProps) => {
         <div style={{display: 'flex', flexDirection: 'row'}}>
             {selectedDecks.map(d=>{
                 return (
-                    <div onClick={(e)=>{
-                        e.preventDefault();
-                        return dispatch?.stageDeck(d)
-                    }}>
+                    <div onClick={()=>{stageDeck(d)}}>
                         <DeckGenerator isStaged={stagedDeck === d} deck={d}/>
                     </div>
 
@@ -50,9 +47,11 @@ function mapStateToProps(state : RootState) {
     };
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) : ConnectedDispatch => {
+const stageDeck = (d: Deck) => ({type: 'STAGE_DECK', payload: d})
+
+const mapDispatchToProps = (dispatch: any) : ConnectedDispatch => {
     return {
-        stageDeck: (deck: Deck) => dispatch({type: 'STAGE_DECK', payload:deck})
+        stageDeck: (deck: Deck) => dispatch(stageDeck(deck))
     }
 };
 
