@@ -34,7 +34,10 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
         case SELECT_TEMPLATE:
             return action.payload;
         case CLEAN_TABLE:
-            return action.payload;
+            return {
+                ...table,
+            }
+            // reset deck states
         case PULL_CARD:
             return action.payload;
         case FLIP_CARD:

@@ -8,6 +8,7 @@ import SlotGenerator from "./SlotGenerator";
 import DeckPresenter from "./DeckPresenter";
 import {Deck} from "../interface/Deck/Deck";
 import {Template} from "../interface/Template/Template";
+import {Action} from "redux";
 
 
 const theme = {
@@ -33,11 +34,11 @@ const TableGenerator = (props : TableGeneratorProps) => {
 
     const {stagedDeck, selectedDecks, selectedTemplate} = props;
 
-
     return (
         <ThemeProvider theme={theme}>
 
             <DeckPresenter props={{selectedDecks, stagedDeck}} />
+            <div onClick={()=>{cleanTable()}}>Clean Table</div>
             {selectedTemplate.templateState.slots.map((s)=> (<SlotGenerator slot={s} />))}
             {selectedDecks.map((deck)=> {
                 return <CardGenerator deck={deck}/>
@@ -45,6 +46,10 @@ const TableGenerator = (props : TableGeneratorProps) => {
 
         </ThemeProvider>
     )
+}
+
+interface ConnectedDispatch {
+    cleanTable: () => Action;
 }
 
 function mapStateToProps(state : RootState) {
@@ -62,6 +67,14 @@ function mapStateToProps(state : RootState) {
     };
 }
 
-export const connectedTableGenerator = connect(mapStateToProps)(TableGenerator)
+const cleanTable = () => ({type: 'CLEAN_TABLE'});
+
+const mapDispatchToProps = (dispatch: any) : ConnectedDispatch => {
+    return {
+        cleanTable: ()=> dispatch(cleanTable())
+    }
+}
+
+export const connectedTableGenerator = connect(mapStateToProps, mapDispatchToProps)(TableGenerator);
 
 export default connectedTableGenerator;
