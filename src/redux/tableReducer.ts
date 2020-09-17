@@ -27,10 +27,6 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
         case DESELECT_DECK:
             return action.payload;
         case STAGE_DECK:
-            console.log({
-                ...table,
-                stagedDeck: action.payload
-            })
             return {
                 ...table,
                 stagedDeck: action.payload

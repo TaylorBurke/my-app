@@ -16,45 +16,24 @@ const theme = {
     maxWidth: '1000px',
     bs: '0 12px 24px 0 rgba(0, 0, 0, 0.5)',
   };
-  
-  const StyledPage = styled.div`
-    /* margin: 230; */
-  `;
-  
-  const Border = styled.div`
-    /* max-width: 300px; */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin: 10 auto;
-    /* padding: 3; */
-    padding: 10;
-  `;
-
 
 
 const DeckGenerator = ({deck, isStaged}: DeckProps) => {
 
     const boxShadow = isStaged ? theme.bs : "";
-
-
+    
     return (
         <ThemeProvider theme={theme}>
             <br/>
-            <StyledPage>
                 <div style={{height: `${80}`}}/>
-
-                <Border>
-                    <div style={{display: 'flex', flexDirection: 'column',
+                    <div style={{display: 'flex', flexDirection: 'column', borderRadius: 4,
                         alignItems: 'center', boxShadow: `${boxShadow}`, padding: 5, margin: 43, backgroundColor: `${theme.black}`
                         }}>
                     <div style={{backgroundColor: `${deck.color}`, justifyContent: 'center', alignItems: 'center', width: deck.width/2, height: deck.height/2}}>
                         <p style={{fontSize:"70%"}}>{deck.name}</p>
                     </div>
                     </div>
-                </Border>
-            </StyledPage>
+
         </ThemeProvider>
     )
 }
