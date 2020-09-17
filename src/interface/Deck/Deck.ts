@@ -9,7 +9,7 @@ export interface Deck {
     height: number,
     color: string;
     getAllCards(): Card[];
-    getRandomCardIndex(max: number): number;
+    getRandomCardIndex(): number;
     getCardTitle(cardIndex: number): string;
     getCardColor(cardIndex: number): string;
     getCardDescription(cardIndex: number): string;

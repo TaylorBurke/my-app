@@ -9,8 +9,8 @@ export const fourDirectionsDeck : Deck = {
     height: 250,
     color: "#823e0e",
     getAllCards: ()=> fourDirectionsCards,
-    getRandomCardIndex: (max)=>{
-        return Math.floor(Math.random() * max) // between 0 and (max -1)
+    getRandomCardIndex: ()=>{
+        return Math.floor(Math.random() * 4) // between 0 and (max -1)
     },
     getCardTitle: (cardIndex) => {
         return fourDirectionsCards[cardIndex].title

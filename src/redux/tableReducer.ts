@@ -39,7 +39,14 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
             }
             // reset deck states
         case PULL_CARD:
-            return action.payload;
+            return {
+                ...table,
+// pull card must modify table state the following ways:
+// of the staged deck deck state, put a random card into its pulled cards property and remove that card from the remaining cards property
+//  of the template state, slot number clicked, populated becomes true, facedown stays true, and card becomes the random card
+            }
+            // todo: determine how to instantiate a deck and manage its state
+            // create more reducers? 
         case FLIP_CARD:
             return action.payload;
         default:

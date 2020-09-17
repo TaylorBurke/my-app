@@ -9,8 +9,8 @@ export const iChingDeck : Deck = {
     height: 300,
     color: "#7c2c85",
     getAllCards: ()=> iChingCards,
-    getRandomCardIndex: (max)=>{
-        return Math.floor(Math.random() * max) // between 0 and (max -1)
+    getRandomCardIndex: ()=>{
+        return Math.floor(Math.random() * 64) // between 0 and (max -1)
     },
     getCardTitle: (cardIndex) => {
         return iChingCards[cardIndex].title

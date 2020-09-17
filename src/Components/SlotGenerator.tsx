@@ -1,6 +1,10 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import {Slot} from "../interface/Template/Slot";
+import {connect} from "react-redux";
+import {Action} from "redux";
+import {RootState} from "../interface/RootState";
+import {getTableState} from "../redux/tableReducer";
 
 type SlotProps = {
     slot: Slot,
@@ -16,22 +20,22 @@ const theme = {
     bs: '0 12px 24px 0 rgba(0, 0, 0, 0.5)',
 };
 
-const StyledPage = styled.div`
-    /* margin: 230; */
-    background: ${props => props.theme.black};
-  `;
-
-const Border = styled.div`
-    /* max-width: 300px; */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin: 10 auto;
-    /* padding: 3; */
-    background: ${theme.black};
-    padding: 10;
-  `;
+// const StyledPage = styled.div`
+//     /* margin: 230; */
+//     background: ${props => props.theme.black};
+//   `;
+//
+// const Border = styled.div`
+//     /* max-width: 300px; */
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-around;
+//     align-items: center;
+//     margin: 10 auto;
+//     /* padding: 3; */
+//     background: ${theme.black};
+//     padding: 10;
+//   `;
 
 
 const SlotGenerator = ({slot}: SlotProps) => {
@@ -40,20 +44,43 @@ const SlotGenerator = ({slot}: SlotProps) => {
     return (
         <ThemeProvider theme={theme}>
             <br/>
-            <StyledPage>
                 <p>{slot.name}</p>
-                <Border>
-                    <div id={`${number}`} style={{display: 'flex', flexDirection: 'column',
+                    <div onClick={()=>{pullCard(number)}} id={`${number}`} style={{display: 'flex', flexDirection: 'column',
                         alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4}}>
                         <div style={{justifyContent: 'center', alignItems: 'center', width: 200, height: 300}}>
                         </div>
-                        {/*<p>By: {artist}</p>*/}
                     </div>
-                </Border>
-                {/*<p>{getCardDescription(chosenCardIndex)}</p>*/}
-            </StyledPage>
         </ThemeProvider>
     )
 }
 
-export default SlotGenerator;
+interface ConnectedDispatch {
+    pullCard: (slotNumber: number) => Action;
+}
+
+function mapStateToProps(state : RootState) {
+    const {
+        selectedDecks,
+        selectedTemplate,
+        isClean,
+        stagedDeck,
+    } = getTableState(state);
+    return {
+        selectedDecks,
+        selectedTemplate,
+        isClean,
+        stagedDeck,
+    };
+}
+
+const pullCard = (slotNumber: number) => ({type: 'PULL_CARD', payload: slotNumber});
+
+const mapDispatchToProps = (dispatch: any) : ConnectedDispatch => {
+    return {
+        pullCard: (slotNumber: number)=> dispatch(pullCard(slotNumber))
+    }
+}
+
+export const connectedSlotGenerator = connect(mapStateToProps, mapDispatchToProps)(SlotGenerator);
+
+export default connectedSlotGenerator;
