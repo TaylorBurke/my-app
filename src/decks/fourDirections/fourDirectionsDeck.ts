@@ -9,8 +9,8 @@ export const fourDirectionsDeck : Deck = {
     height: 250,
     color: "#823e0e",
     getAllCards: ()=> fourDirectionsCards,
-    getRandomCardIndex: ()=>{
-        return Math.floor(Math.random() * 4) // between 0 and (max -1)
+    getRandomCardIndex: () => {
+        return Math.floor(Math.random() * fourDirectionsDeck.getRemainingCards().length) // between 0 and (max -1)
     },
     getCardTitle: (cardIndex) => {
         return fourDirectionsCards[cardIndex].title
@@ -23,6 +23,12 @@ export const fourDirectionsDeck : Deck = {
     },
     getCardImage: (cardIndex) => {
         return fourDirectionsCards[cardIndex].image
+    },
+    getPulledCards: function(){
+        return this.deckState.pulledCards;
+    },
+    getRemainingCards: function(){
+        return this.deckState.remainingCards;
     },
     deckState: {
         remainingCards: fourDirectionsCards,

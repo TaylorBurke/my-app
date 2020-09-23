@@ -14,5 +14,7 @@ export interface Deck {
     getCardColor(cardIndex: number): string;
     getCardDescription(cardIndex: number): string;
     getCardImage(cardIndex: number): string;
+    getPulledCards(): Card[];
+    getRemainingCards(): Card[];
     deckState: DeckState;
 }

@@ -9,8 +9,8 @@ export const iChingDeck : Deck = {
     height: 300,
     color: "#7c2c85",
     getAllCards: ()=> iChingCards,
-    getRandomCardIndex: ()=>{
-        return Math.floor(Math.random() * 64) // between 0 and (max -1)
+    getRandomCardIndex: () => {
+        return Math.floor(Math.random() * iChingDeck.getRemainingCards().length) // between 0 and (max -1)
     },
     getCardTitle: (cardIndex) => {
         return iChingCards[cardIndex].title
@@ -23,6 +23,12 @@ export const iChingDeck : Deck = {
     },
     getCardImage: (cardIndex) => {
         return iChingCards[cardIndex].image
+    },
+    getPulledCards: function(){
+        return this.deckState.pulledCards;
+    },
+    getRemainingCards: function(){
+        return this.deckState.remainingCards;
     },
     deckState: {
         remainingCards: iChingCards,

@@ -4,6 +4,8 @@ import {fourDirectionsDeck} from "../decks/fourDirections/fourDirectionsDeck";
 import {defaultTemplate} from "../templates/defaultTemplate";
 import {RootState} from "../interface/RootState";
 import {iChingDeck} from "../decks/iChing/iChingDeck";
+import {Card} from "../interface/Deck/Card";
+import {Slot} from "../interface/Template/Slot";
 
 export const startingTable : TableState = {
     selectedDecks: [fourDirectionsDeck, iChingDeck],
@@ -39,14 +41,39 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
             }
             // reset deck states
         case PULL_CARD:
+            // todo: logic belong here or in action?
+            let index : number = table.stagedDeck.getRandomCardIndex();
+            let remaining : Card[] = table.stagedDeck.getRemainingCards();
+            let prevPulled : Card[] = table.stagedDeck.getPulledCards();
+            let justPulled : Card = remaining[index];
+
+            // used to map through slots and see if a slot should be updated
+            const updateSlot = (slot : Slot, slotNumber : number) => {
+                if (slot.number === slotNumber) {
+                    slot.populated = true;
+                    slot.card = justPulled;
+                    return slot;
+                }
+                return slot;
+            }
+
             return {
                 ...table,
-// pull card must modify table state the following ways:
-// of the staged deck deck state, put a random card into its pulled cards property and remove that card from the remaining cards property
-//  of the template state, slot number clicked, populated becomes true, facedown stays true, and card becomes the random card
+                stagedDeck: {
+                    ...table.stagedDeck,
+                    deckState: {
+                        remainingCards: remaining.splice(index, 1),
+                        pulledCards: prevPulled.concat(justPulled)
+                    },
+                    selectedTemplate: {
+                        ...table.selectedTemplate,
+                        templateState: {
+                            slots: table.selectedTemplate.templateState.slots.map((s)=>{updateSlot(s, action.payload)})
+                            // map through each slot and return an array of the same but modify the selected slot (action.payload)
+                        }
+                    }
+                }
             }
-            // todo: determine how to instantiate a deck and manage its state
-            // create more reducers? 
         case FLIP_CARD:
             return action.payload;
         default:

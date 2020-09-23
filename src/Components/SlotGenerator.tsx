@@ -73,7 +73,10 @@ function mapStateToProps(state : RootState) {
     };
 }
 
-const pullCard = (slotNumber: number) => ({type: 'PULL_CARD', payload: slotNumber});
+// @todo doesn't seem to work
+const pullCard = (slotNumber: number) => (
+    {type: 'PULL_CARD', payload: slotNumber}
+    );
 
 const mapDispatchToProps = (dispatch: any) : ConnectedDispatch => {
     return {
