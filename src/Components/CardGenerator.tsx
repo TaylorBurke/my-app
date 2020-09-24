@@ -19,23 +19,22 @@ const theme = {
 
 const CardGenerator = ({deck}: DeckProps) => {
 
-    const {numberOfCards, getRandomCardIndex, getCardTitle, getCardColor, getCardImage} = deck;
-
-    const chosenCardIndex = getRandomCardIndex(numberOfCards);
+    const {getRandomCardIndex, getCardTitle, getCardColor, getCardImage} = deck;
 
     return (
         <ThemeProvider theme={theme}>
             <br/>
-            <div style={{
-                display: 'flex', flexDirection: 'column', border: `5px solid ${theme.black}`, borderRadius: 5,
-                alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4,
-                backgroundColor: `${getCardColor(chosenCardIndex)}`, width: deck.width, height: deck.height
-            }}>
-                <div style={{justifyContent: 'center', alignItems: 'center'}}>
-                    <p>{getCardTitle(chosenCardIndex)}</p>
-                    <img width={deck.imageWidth} src={getCardImage(chosenCardIndex)} className="image" alt=""/>
-                </div>
-            </div>
+            <div>card</div>
+            {/*<div style={{*/}
+            {/*    display: 'flex', flexDirection: 'column', border: `5px solid ${theme.black}`, borderRadius: 5,*/}
+            {/*    alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4,*/}
+            {/*    backgroundColor: `${getCardColor(chosenCardIndex)}`, width: deck.width, height: deck.height*/}
+            {/*}}>*/}
+            {/*    <div style={{justifyContent: 'center', alignItems: 'center'}}>*/}
+            {/*        <p>{getCardTitle(chosenCardIndex)}</p>*/}
+            {/*        <img width={deck.imageWidth} src={getCardImage(chosenCardIndex)} className="image" alt=""/>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </ThemeProvider>
     )
 }

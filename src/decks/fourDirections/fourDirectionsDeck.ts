@@ -9,20 +9,21 @@ export const fourDirectionsDeck : Deck = {
     height: 250,
     color: "#823e0e",
     getAllCards: ()=> fourDirectionsCards,
-    getRandomCardIndex: () => {
-        return Math.floor(Math.random() * fourDirectionsDeck.getRemainingCards().length) // between 0 and (max -1)
+    getRandomCardIndex: function(){
+        let max = this.getRemainingCards().length;
+        return Math.floor(Math.random() * max) // between 0 and (max -1)
     },
-    getCardTitle: (cardIndex) => {
-        return fourDirectionsCards[cardIndex].title
+    getCardTitle: function(cardIndex){
+        return this.getPulledCards()[cardIndex].title
     },
-    getCardColor: (cardIndex) => {
-        return fourDirectionsCards[cardIndex].color
+    getCardColor: function(cardIndex){
+        return this.getPulledCards()[cardIndex].color
     },
-    getCardDescription: (cardIndex: number) => {
-        return fourDirectionsCards[cardIndex].description
+    getCardDescription: function(cardIndex){
+        return this.getPulledCards()[cardIndex].description
     },
-    getCardImage: (cardIndex) => {
-        return fourDirectionsCards[cardIndex].image
+    getCardImage: function(cardIndex){
+        return this.getPulledCards()[cardIndex].image
     },
     getPulledCards: function(){
         return this.deckState.pulledCards;

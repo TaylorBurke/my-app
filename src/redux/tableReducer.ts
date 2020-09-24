@@ -46,6 +46,8 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
             let remaining : Card[] = table.stagedDeck.getRemainingCards();
             let prevPulled : Card[] = table.stagedDeck.getPulledCards();
             let justPulled : Card = remaining[index];
+            // now that the pulled card has been stored from the remaining pile, modify remaining
+            remaining.splice(index, 1);
 
             // used to map through slots and see if a slot should be updated
             const updateSlot = (slot : Slot, slotNumber : number) => {
@@ -62,7 +64,7 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
                 stagedDeck: {
                     ...table.stagedDeck,
                     deckState: {
-                        remainingCards: remaining.splice(index, 1),
+                        remainingCards: remaining,
                         pulledCards: prevPulled.concat(justPulled)
                     },
                     selectedTemplate: {

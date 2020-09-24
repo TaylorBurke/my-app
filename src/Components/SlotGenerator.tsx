@@ -7,7 +7,10 @@ import {RootState} from "../interface/RootState";
 import {getTableState} from "../redux/tableReducer";
 
 type SlotProps = {
-    slot: Slot,
+    props: {
+        slot: Slot,
+    }
+    pullCard: any
 }
 
 const theme = {
@@ -38,9 +41,11 @@ const theme = {
 //   `;
 
 
-const SlotGenerator = ({slot}: SlotProps) => {
+const SlotGenerator = ({props, pullCard}: SlotProps) => {
 
+    const {slot} = props;
     const {number} = slot;
+
     return (
         <ThemeProvider theme={theme}>
             <br/>
@@ -74,9 +79,7 @@ function mapStateToProps(state : RootState) {
 }
 
 // @todo doesn't seem to work
-const pullCard = (slotNumber: number) => (
-    {type: 'PULL_CARD', payload: slotNumber}
-    );
+const pullCard = (slotNumber: number) => ({type: 'PULL_CARD', payload: slotNumber});
 
 const mapDispatchToProps = (dispatch: any) : ConnectedDispatch => {
     return {

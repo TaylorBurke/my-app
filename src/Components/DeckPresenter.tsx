@@ -1,7 +1,7 @@
 import DeckGenerator from "./DeckGenerator";
 import React from "react";
 import {Deck} from "../interface/Deck/Deck";
-import {Action, Dispatch} from "redux";
+import {Action} from "redux";
 import {connect} from "react-redux";
 import {RootState} from "../interface/RootState";
 import {getTableState} from "../redux/tableReducer";
