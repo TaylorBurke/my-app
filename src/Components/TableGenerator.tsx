@@ -38,7 +38,7 @@ const TableGenerator = (props : TableGeneratorProps) => {
         <ThemeProvider theme={theme}>
 
             <DeckPresenter props={{selectedDecks, stagedDeck}} />
-            <div onClick={()=>{cleanTable()}}>Clean Table</div>
+            {/*<div onClick={()=>{cleanTable()}}>Clean Table</div>*/}
             {selectedTemplate.templateState.slots.map((s)=> (<SlotGenerator props={{slot: s}} />))}
             {selectedDecks.map((deck)=> {
                 return <CardGenerator deck={deck}/>

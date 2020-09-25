@@ -54,6 +54,7 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
                 if (slot.number === slotNumber) {
                     slot.populated = true;
                     slot.card = justPulled;
+                    slot.deck = table.stagedDeck;
                     return slot;
                 }
                 return slot;

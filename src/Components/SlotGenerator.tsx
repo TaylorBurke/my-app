@@ -5,12 +5,15 @@ import {connect} from "react-redux";
 import {Action} from "redux";
 import {RootState} from "../interface/RootState";
 import {getTableState} from "../redux/tableReducer";
+import {Deck} from "../interface/Deck/Deck";
 
 type SlotProps = {
     props: {
         slot: Slot,
     }
     pullCard: any
+    flipCard: any
+    stagedDeck: Deck
 }
 
 const theme = {
@@ -23,44 +26,55 @@ const theme = {
     bs: '0 12px 24px 0 rgba(0, 0, 0, 0.5)',
 };
 
-// const StyledPage = styled.div`
-//     /* margin: 230; */
-//     background: ${props => props.theme.black};
-//   `;
-//
-// const Border = styled.div`
-//     /* max-width: 300px; */
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-around;
-//     align-items: center;
-//     margin: 10 auto;
-//     /* padding: 3; */
-//     background: ${theme.black};
-//     padding: 10;
-//   `;
-
-
-const SlotGenerator = ({props, pullCard}: SlotProps) => {
+const SlotGenerator = ({props, pullCard, flipCard, stagedDeck}: SlotProps) => {
 
     const {slot} = props;
-    const {number} = slot;
+    const {number, populated, faceDown} = slot;
+
+    const empty = (
+        <div onClick={()=>{pullCard(number)}} id={`${number}`} style={{display: 'flex', flexDirection: 'column',
+            alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4}}>
+            <div style={{justifyContent: 'center', alignItems: 'center', width: stagedDeck.width, height: stagedDeck.height}}>
+            </div>
+        </div>
+    );
+
+    const pulled = (
+            <div onClick={()=>{flipCard(number)}} id={`${number}`} style={{display: 'flex', flexDirection: 'column', border: `5px solid ${theme.black}`, borderRadius: 5,
+                alignItems: 'center', boxShadow: `${theme.bs}`}}>
+                <div style={{justifyContent: 'center', alignItems: 'center', backgroundColor: slot.deck?.color, width: slot.deck?.width, height: slot.deck?.height}}>
+                </div>
+            </div>
+        );
+
+
+    const flipped = (
+        // card generator
+        <div id={`${number}`} style={{display: 'flex', flexDirection: 'column',
+            alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4}}>
+            <div style={{justifyContent: 'center', alignItems: 'center', width: 200, height: 300}}>
+            </div>
+        </div>
+    );
 
     return (
         <ThemeProvider theme={theme}>
             <br/>
                 <p>{slot.name}</p>
-                    <div onClick={()=>{pullCard(number)}} id={`${number}`} style={{display: 'flex', flexDirection: 'column',
-                        alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4}}>
-                        <div style={{justifyContent: 'center', alignItems: 'center', width: 200, height: 300}}>
-                        </div>
-                    </div>
+            {
+                populated && faceDown ?
+                pulled :
+                populated ?
+                    flipped :
+                    empty
+            }
         </ThemeProvider>
     )
 }
 
 interface ConnectedDispatch {
     pullCard: (slotNumber: number) => Action;
+    flipCard: (slotNumber: number) => Action;
 }
 
 function mapStateToProps(state : RootState) {
@@ -78,12 +92,13 @@ function mapStateToProps(state : RootState) {
     };
 }
 
-// @todo doesn't seem to work
 const pullCard = (slotNumber: number) => ({type: 'PULL_CARD', payload: slotNumber});
+const flipCard = (slotNumber: number) => ({type: 'FLIP_CARD', payload: slotNumber});
 
 const mapDispatchToProps = (dispatch: any) : ConnectedDispatch => {
     return {
-        pullCard: (slotNumber: number)=> dispatch(pullCard(slotNumber))
+        pullCard: (slotNumber: number)=> dispatch(pullCard(slotNumber)),
+        flipCard: (slotNumber: number)=> dispatch(flipCard(slotNumber))
     }
 }
 
