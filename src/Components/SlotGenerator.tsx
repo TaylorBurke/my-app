@@ -15,6 +15,7 @@ type SlotProps = {
     pullCard: any
     flipCard: any
     stagedDeck: Deck
+    isClean: boolean
 }
 
 const theme = {
@@ -27,7 +28,7 @@ const theme = {
     bs: '0 12px 24px 0 rgba(0, 0, 0, 0.5)',
 };
 
-const SlotGenerator = ({props, pullCard, flipCard, stagedDeck}: SlotProps) => {
+const SlotGenerator = ({props, pullCard, flipCard, stagedDeck, isClean}: SlotProps) => {
 
     const {slot} = props;
     const {number, populated, faceDown} = slot;

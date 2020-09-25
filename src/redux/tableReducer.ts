@@ -62,6 +62,7 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
 
             return {
                 ...table,
+                isClean: false,
                 stagedDeck: {
                     ...table.stagedDeck,
                     deckState: {
