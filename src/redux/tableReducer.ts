@@ -7,7 +7,7 @@ import {iChingDeck} from "../decks/iChing/iChingDeck";
 import {Card} from "../interface/Deck/Card";
 import {Slot} from "../interface/Template/Slot";
 
-export const startingTable : TableState = {
+export const startingTable: TableState = {
     selectedDecks: [fourDirectionsDeck, iChingDeck],
     stagedDeck: fourDirectionsDeck,
     selectedTemplate: defaultTemplate,
@@ -25,32 +25,32 @@ const FLIP_CARD = "FLIP_CARD"; // change the face up status of the current slot
 export const tableReducer = (table: TableState = startingTable, action: TableAction) => {
     switch (action.type) {
         case SELECT_DECK:
-            return action.payload;
+            // return action.payload;
         case DESELECT_DECK:
-            return action.payload;
+            // return action.payload;
         case STAGE_DECK:
             return {
                 ...table,
                 stagedDeck: action.payload
             };
         case SELECT_TEMPLATE:
-            return action.payload;
+            // return action.payload;
         case CLEAN_TABLE:
             return {
                 ...table,
             }
-            // reset deck states
+        // reset deck states
         case PULL_CARD:
             // todo: logic belong here or in action?
-            let index : number = table.stagedDeck.getRandomCardIndex();
-            let remaining : Card[] = table.stagedDeck.getRemainingCards();
-            let prevPulled : Card[] = table.stagedDeck.getPulledCards();
-            let justPulled : Card = remaining[index];
+            let index: number = table.stagedDeck.getRandomCardIndex();
+            let remaining: Card[] = table.stagedDeck.getRemainingCards();
+            let prevPulled: Card[] = table.stagedDeck.getPulledCards();
+            let justPulled: Card = remaining[index];
             // now that the pulled card has been stored from the remaining pile, modify remaining
             remaining.splice(index, 1);
 
             // used to map through slots and see if a slot should be updated
-            const updateSlot = (slot : Slot, slotNumber : number) => {
+            const pullCardToSelectedSlot = (slot: Slot, slotNumber: number) => {
                 if (slot.number === slotNumber) {
                     slot.populated = true;
                     slot.card = justPulled;
@@ -67,24 +67,45 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
                     deckState: {
                         remainingCards: remaining,
                         pulledCards: prevPulled.concat(justPulled)
-                    },
-                    selectedTemplate: {
-                        ...table.selectedTemplate,
-                        templateState: {
-                            slots: table.selectedTemplate.templateState.slots.map((s)=>{updateSlot(s, action.payload)})
-                            // map through each slot and return an array of the same but modify the selected slot (action.payload)
-                        }
+                    }
+                },
+                selectedTemplate: {
+                    ...table.selectedTemplate,
+                    templateState: {
+                        slots: table.selectedTemplate.templateState.slots.map((s) => {
+                            return pullCardToSelectedSlot(s, action.payload)
+                        })
                     }
                 }
             }
         case FLIP_CARD:
-            return action.payload;
+
+            // todo consider moving these helper functions somewhere more appropriate
+            const flipCardOnSelectedSlot = (slot: Slot, slotNumber: number) => {
+                if (slot.number === slotNumber) {
+                    slot.faceDown = false;
+                    return slot;
+                }
+                return slot;
+            }
+
+            return {
+                ...table,
+                selectedTemplate: {
+                    ...table.selectedTemplate,
+                    templateState: {
+                        slots: table.selectedTemplate.templateState.slots.map((s) => {
+                            return flipCardOnSelectedSlot(s, action.payload)
+                        })
+                    }
+                }
+            }
         default:
             return table;
     }
 }
 
-export function getTableState(state : RootState){
+export function getTableState(state: RootState) {
     const {
         selectedDecks,
         selectedTemplate,

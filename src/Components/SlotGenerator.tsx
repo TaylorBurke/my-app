@@ -6,6 +6,7 @@ import {Action} from "redux";
 import {RootState} from "../interface/RootState";
 import {getTableState} from "../redux/tableReducer";
 import {Deck} from "../interface/Deck/Deck";
+import CardGenerator from "./CardGenerator";
 
 type SlotProps = {
     props: {
@@ -49,12 +50,7 @@ const SlotGenerator = ({props, pullCard, flipCard, stagedDeck}: SlotProps) => {
 
 
     const flipped = (
-        // card generator
-        <div id={`${number}`} style={{display: 'flex', flexDirection: 'column',
-            alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4}}>
-            <div style={{justifyContent: 'center', alignItems: 'center', width: 200, height: 300}}>
-            </div>
-        </div>
+        <CardGenerator props={{card: slot.card, deck: slot.deck}}/>
     );
 
     return (

@@ -1,9 +1,13 @@
 import React from 'react';
+import {ThemeProvider} from 'styled-components';
+import {Card} from "../interface/Deck/Card";
 import {Deck} from "../interface/Deck/Deck";
-import styled, {ThemeProvider} from 'styled-components';
 
-type DeckProps = {
-    deck: Deck,
+type CardProps = {
+    props: {
+        deck?: Deck,
+        card?: Card
+    }
 }
 
 const theme = {
@@ -17,24 +21,22 @@ const theme = {
 };
 
 
-const CardGenerator = ({deck}: DeckProps) => {
+const CardGenerator = ({props}: CardProps) => {
 
-    const {getRandomCardIndex, getCardTitle, getCardColor, getCardImage} = deck;
 
     return (
         <ThemeProvider theme={theme}>
             <br/>
-            <div>card</div>
-            {/*<div style={{*/}
-            {/*    display: 'flex', flexDirection: 'column', border: `5px solid ${theme.black}`, borderRadius: 5,*/}
-            {/*    alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4,*/}
-            {/*    backgroundColor: `${getCardColor(chosenCardIndex)}`, width: deck.width, height: deck.height*/}
-            {/*}}>*/}
-            {/*    <div style={{justifyContent: 'center', alignItems: 'center'}}>*/}
-            {/*        <p>{getCardTitle(chosenCardIndex)}</p>*/}
-            {/*        <img width={deck.imageWidth} src={getCardImage(chosenCardIndex)} className="image" alt=""/>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+            <div style={{
+                display: 'flex', flexDirection: 'column', border: `5px solid ${theme.black}`, borderRadius: 5,
+                alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4,
+                backgroundColor: props.card?.color, width: props.deck?.width, height: props.deck?.height
+            }}>
+                <div style={{justifyContent: 'center', alignItems: 'center'}}>
+                    <p>{props.card?.title}</p>
+                    <img width={props.deck?.imageWidth} src={props.card?.image} className="image" alt=""/>
+                </div>
+            </div>
         </ThemeProvider>
     )
 }
