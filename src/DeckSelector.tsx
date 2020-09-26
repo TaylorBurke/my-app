@@ -1,9 +1,9 @@
 import React from 'react';
-import {Deck} from "./Deck";
 import styled, { ThemeProvider } from 'styled-components';
+import {DeckInterface} from "./interface/Deck/DeckInterface";
 
 type DeckProps = {
-    deck: Deck,
+    deck: DeckInterface,
     artist: String,
 }
 const theme = {

@@ -1,11 +1,11 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
 import {Card} from "../interface/Deck/Card";
-import {Deck} from "../interface/Deck/Deck";
+import {DeckInterface} from "../interface/Deck/DeckInterface";
 
 type CardProps = {
     props: {
-        deck?: Deck,
+        deck?: DeckInterface,
         card?: Card
     }
 }

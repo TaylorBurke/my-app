@@ -1,6 +1,6 @@
-import {Template} from "../interface/Template/Template";
+import {TemplateInterface} from "../interface/Template/TemplateInterface";
 
-export const advancedTemplate : Template = {
+export const advancedTemplate : TemplateInterface = {
     title: "Pull Four",
     numberOfCards: 4,
     templateState: {

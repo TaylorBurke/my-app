@@ -1,6 +1,6 @@
 import DeckGenerator from "./DeckGenerator";
 import React from "react";
-import {Deck} from "../interface/Deck/Deck";
+import {DeckInterface} from "../interface/Deck/DeckInterface";
 import {Action} from "redux";
 import {connect} from "react-redux";
 import {RootState} from "../interface/RootState";
@@ -8,8 +8,8 @@ import {getTableState} from "../redux/tableReducer";
 
 type DeckPresenterProps = {
     props: {
-        selectedDecks: Deck[],
-        stagedDeck: Deck
+        selectedDecks: DeckInterface[],
+        stagedDeck: DeckInterface
     }
         stageDeck: any
 }
@@ -33,7 +33,7 @@ const DeckPresenter = ({props, stageDeck} : DeckPresenterProps) => {
 }
 
 interface ConnectedDispatch {
-    stageDeck: (deck: Deck) => Action;
+    stageDeck: (deck: DeckInterface) => Action;
 }
 
 function mapStateToProps(state : RootState) {
@@ -47,11 +47,11 @@ function mapStateToProps(state : RootState) {
     };
 }
 
-const stageDeck = (d: Deck) => ({type: 'STAGE_DECK', payload: d})
+const stageDeck = (d: DeckInterface) => ({type: 'STAGE_DECK', payload: d})
 
 const mapDispatchToProps = (dispatch: any) : ConnectedDispatch => {
     return {
-        stageDeck: (deck: Deck) => dispatch(stageDeck(deck))
+        stageDeck: (deck: DeckInterface) => dispatch(stageDeck(deck))
     }
 };
 

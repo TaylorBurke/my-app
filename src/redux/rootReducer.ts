@@ -3,19 +3,19 @@ import {combineReducers} from 'redux';
 import {AppState} from "../interface/AppState";
 import {AppAction} from "../interface/Actions/AppAction";
 
-import {Template} from "../interface/Template/Template";
+import {TemplateInterface} from "../interface/Template/TemplateInterface";
 import {defaultTemplate} from "../templates/defaultTemplate";
 
-import {Deck} from "../interface/Deck/Deck";
+import {DeckInterface} from "../interface/Deck/DeckInterface";
 import {fourDirectionsDeck} from '../decks/fourDirections/fourDirectionsDeck'
 import {iChingDeck} from "../decks/iChing/iChingDeck";
 import {tableReducer} from "./tableReducer";
 import {RootState} from "../interface/RootState";
 
 
-const allDecks : Deck[] = [fourDirectionsDeck, iChingDeck];
+const allDecks : DeckInterface[] = [fourDirectionsDeck, iChingDeck];
 
-const allTemplates : Template[] = [
+const allTemplates : TemplateInterface[] = [
     defaultTemplate
 ];
 

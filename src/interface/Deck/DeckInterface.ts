@@ -1,7 +1,7 @@
 import {Card} from "./Card";
 import {DeckState} from "./DeckState";
 
-export interface Deck {
+export interface DeckInterface {
     name: string;
     numberOfCards: number;
     imageWidth: number,

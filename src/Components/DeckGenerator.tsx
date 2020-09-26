@@ -1,9 +1,9 @@
 import React from 'react';
-import {Deck} from "../interface/Deck/Deck";
+import {DeckInterface} from "../interface/Deck/DeckInterface";
 import styled, { ThemeProvider } from 'styled-components';
 
 type DeckProps = {
-    deck: Deck,
+    deck: DeckInterface,
     isStaged: boolean,
 }
 

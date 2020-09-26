@@ -1,11 +1,15 @@
 import {TableState} from "../interface/Table/TableState";
 import {TableAction} from "../interface/Actions/TableAction";
-import {fourDirectionsDeck} from "../decks/fourDirections/fourDirectionsDeck";
+import {FourDirectionsDeck, fourDirectionsDeck} from "../decks/fourDirections/fourDirectionsDeck";
 import {defaultTemplate} from "../templates/defaultTemplate";
 import {RootState} from "../interface/RootState";
-import {iChingDeck} from "../decks/iChing/iChingDeck";
+import {IChingDeck, iChingDeck} from "../decks/iChing/iChingDeck";
 import {Card} from "../interface/Deck/Card";
 import {Slot} from "../interface/Template/Slot";
+import {TwoCardTemplate} from "../interface/Template/TemplateInterface";
+import {DeckInterface} from "../interface/Deck/DeckInterface";
+import fourDirectionsCards from "../decks/fourDirections/fourDirectionsCards";
+import iChingCards from "../decks/iChing/iChingCards";
 
 export const startingTable: TableState = {
     selectedDecks: [fourDirectionsDeck, iChingDeck],
@@ -13,6 +17,37 @@ export const startingTable: TableState = {
     selectedTemplate: defaultTemplate,
     isClean: true,
 };
+
+const getCleanDecks = (): DeckInterface[] => {
+    let f = new FourDirectionsDeck({
+        remainingCards: fourDirectionsCards,
+        pulledCards: []
+    });
+    let i = new IChingDeck({
+        remainingCards: iChingCards,
+        pulledCards: []
+    });
+    return [f, i];
+}
+
+// @todo I think this is a problem because the staged deck is a different instance than the 2 selected
+const preserveStagedDeck = (table: TableState): DeckInterface => {
+    let f = new FourDirectionsDeck({
+        remainingCards: [...fourDirectionsCards],
+        pulledCards: []
+    });
+    switch (table.stagedDeck.name){
+        case "Four Directions" :
+            return f;
+        case "iChing" :
+            return new IChingDeck({
+                remainingCards: [...iChingCards],
+                pulledCards: []
+            });
+        default:
+            return f;
+    }
+}
 
 const SELECT_DECK = 'SELECT_DECK'; // moves a deck onto the table
 const DESELECT_DECK = 'DESELECT_DECK'; // removes a deck from the table
@@ -38,6 +73,25 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
         case CLEAN_TABLE:
             return {
                 ...table,
+                isClean: true,
+                selectedDecks: getCleanDecks(),
+                stagedDeck: preserveStagedDeck(table),
+                selectedTemplate: new TwoCardTemplate({
+                    slots: [
+                        {
+                            number: 1,
+                            name: "Inner World",
+                            populated: false,
+                            faceDown: true,
+                        },
+                        {
+                            number: 2,
+                            name: "Outer World",
+                            populated: false,
+                            faceDown: true,
+                        },
+                    ]
+                })
             }
         // reset deck states
         case PULL_CARD:

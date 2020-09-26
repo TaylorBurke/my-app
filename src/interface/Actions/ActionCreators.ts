@@ -1,5 +1,5 @@
-import {Deck} from "../Deck/Deck";
+import {DeckInterface} from "../Deck/DeckInterface";
 
-const stageDeck = (deck : Deck) => {
+const stageDeck = (deck : DeckInterface) => {
 
 }

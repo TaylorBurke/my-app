@@ -6,8 +6,8 @@ import {getTableState} from "../redux/tableReducer";
 import {RootState} from "../interface/RootState";
 import SlotGenerator from "./SlotGenerator";
 import DeckPresenter from "./DeckPresenter";
-import {Deck} from "../interface/Deck/Deck";
-import {Template} from "../interface/Template/Template";
+import {DeckInterface} from "../interface/Deck/DeckInterface";
+import {TemplateInterface} from "../interface/Template/TemplateInterface";
 import {Action} from "redux";
 
 
@@ -22,9 +22,9 @@ const theme = {
   };
 
 type TableGeneratorProps = {
-    selectedDecks: Deck[];
-    stagedDeck: Deck;
-    selectedTemplate: Template;
+    selectedDecks: DeckInterface[];
+    stagedDeck: DeckInterface;
+    selectedTemplate: TemplateInterface;
     isClean: boolean;
     cleanTable: any;
 }

@@ -1,7 +1,7 @@
-import {Template} from "./Template/Template";
-import {Deck} from "./Deck/Deck";
+import {TemplateInterface} from "./Template/TemplateInterface";
+import {DeckInterface} from "./Deck/DeckInterface";
 
 export interface AppState {
-    templates: Template[];
-    decks: Deck[];
+    templates: TemplateInterface[];
+    decks: DeckInterface[];
 }

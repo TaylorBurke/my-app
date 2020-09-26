@@ -1,16 +1,24 @@
-import {Template} from "../interface/Template/Template";
+import {TemplateInterface} from "../interface/Template/TemplateInterface";
 
-export const defaultTemplate : Template = {
+//@todo face it - it's time to introduce classes and construct instances, it will solve your problem of cleaning the table (and default field values for slots too!)
+export const defaultTemplate : TemplateInterface = {
     title: "Pull One",
     numberOfCards: 1,
     templateState: {
         slots: [
             {
                 number: 1,
-                name: "Today's Card",
+                name: "Inner World",
+                populated: false,
+                faceDown: true,
+            },
+            {
+                number: 2,
+                name: "Outer World",
                 populated: false,
                 faceDown: true,
             },
         ]
     }
 };
+

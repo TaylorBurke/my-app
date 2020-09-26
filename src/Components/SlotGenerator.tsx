@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {Action} from "redux";
 import {RootState} from "../interface/RootState";
 import {getTableState} from "../redux/tableReducer";
-import {Deck} from "../interface/Deck/Deck";
+import {DeckInterface} from "../interface/Deck/DeckInterface";
 import CardGenerator from "./CardGenerator";
 
 type SlotProps = {
@@ -14,7 +14,7 @@ type SlotProps = {
     }
     pullCard: any
     flipCard: any
-    stagedDeck: Deck
+    stagedDeck: DeckInterface
     isClean: boolean
 }
 
