@@ -1,9 +1,12 @@
-import {DeckInterface} from "../Deck/DeckInterface";
-import {TemplateInterface} from "../Template/TemplateInterface";
+
+import {Deck} from "../Deck/Deck";
+import {Template} from "../Template/defaultTemplate";
 
 export interface TableState {
-    selectedDecks: DeckInterface[];
-    stagedDeck: DeckInterface;
-    selectedTemplate: TemplateInterface;
+    allDecks: Deck[];
+    selectedDecks: Deck[];
+    stagedDeck: Deck;
+    allTemplates: Template[];
+    selectedTemplate: Template;
     isClean: boolean;
 }

@@ -7,11 +7,14 @@ import {IChingDeck, iChingDeck} from "../decks/iChing/iChingDeck";
 import {Card} from "../interface/Deck/Card";
 import {SlotInterface} from "../interface/Template/SlotInterface";
 import {Deck} from "../interface/Deck/Deck";
+import {defaultSlot, Slot} from "../interface/Template/defaultSlot";
 
 
 export const startingTable: TableState = {
+    allDecks:  [fourDirectionsDeck, iChingDeck],
     selectedDecks: [fourDirectionsDeck, iChingDeck],
     stagedDeck: fourDirectionsDeck,
+    allTemplates: [defaultTemplate],
     selectedTemplate: defaultTemplate,
     isClean: true,
 };
@@ -36,6 +39,7 @@ const getIndexOfStagedDeck = (table: TableState): number => {
 const SELECT_DECK = 'SELECT_DECK'; // moves a deck onto the table
 const DESELECT_DECK = 'DESELECT_DECK'; // removes a deck from the table
 const STAGE_DECK = 'STAGE_DECK'; // next card will be pulled from the staged deck
+const CREATE_TEMPLATE = 'CREATE_TEMPLATE'; // construct a template from user input and put it in
 const SELECT_TEMPLATE = 'SELECT_TEMPLATE'; // choose a template to use for the table
 const CLEAN_TABLE = "CLEAN_TABLE"; // clear all slots and reset all deck states (template and staged decks are not changed)
 const PULL_CARD = "PULL_CARD"; // move a card from the selected deck into the next slot, to remain face down
@@ -61,20 +65,7 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
                 isClean: true,
                 selectedDecks: selected,
                 stagedDeck: selected[getIndexOfStagedDeck(table)],
-                selectedTemplate: new Template("s", [
-                        {
-                            number: 1,
-                            name: "Inner World",
-                            populated: false,
-                            faceDown: true,
-                        },
-                        {
-                            number: 2,
-                            name: "Outer World",
-                            populated: false,
-                            faceDown: true,
-                        },
-                    ])
+                selectedTemplate: new Template("default", [{...defaultSlot}])
             }
         // reset deck states
         case PULL_CARD:
