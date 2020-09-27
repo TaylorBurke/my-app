@@ -4,7 +4,7 @@ import {AppState} from "../interface/AppState";
 import {AppAction} from "../interface/Actions/AppAction";
 
 import {TemplateInterface} from "../interface/Template/TemplateInterface";
-import {defaultTemplate} from "../templates/defaultTemplate";
+import {defaultTemplate} from "../interface/Template/defaultTemplate";
 
 import {DeckInterface} from "../interface/Deck/DeckInterface";
 import {fourDirectionsDeck} from '../decks/fourDirections/fourDirectionsDeck'

@@ -1,11 +1,11 @@
 import {Card} from "../Deck/Card";
-import {DeckInterface} from "../Deck/DeckInterface";
+import {Deck} from "../Deck/Deck";
 
-export interface Slot {
+export interface SlotInterface {
     number: number;
     name: string;
     populated: boolean;
     faceDown: boolean;
     card?: Card;
-    deck?: DeckInterface;
+    deck?: Deck;
 }

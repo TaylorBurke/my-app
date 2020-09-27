@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import {Slot} from "../interface/Template/Slot";
+import {SlotInterface} from "../interface/Template/SlotInterface";
 import {connect} from "react-redux";
 import {Action} from "redux";
 import {RootState} from "../interface/RootState";
@@ -11,7 +11,7 @@ import {flipCard, pullCard} from "../interface/Actions/ActionCreators";
 
 type SlotProps = {
     props: {
-        slot: Slot,
+        slot: SlotInterface,
     }
     pullCard: any
     flipCard: any

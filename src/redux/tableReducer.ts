@@ -1,13 +1,12 @@
 import {TableState} from "../interface/Table/TableState";
 import {TableAction} from "../interface/Actions/TableAction";
 import {FourDirectionsDeck, fourDirectionsDeck} from "../decks/fourDirections/fourDirectionsDeck";
-import {defaultTemplate} from "../templates/defaultTemplate";
+import {defaultTemplate, Template} from "../interface/Template/defaultTemplate";
 import {RootState} from "../interface/RootState";
 import {IChingDeck, iChingDeck} from "../decks/iChing/iChingDeck";
 import {Card} from "../interface/Deck/Card";
-import {Slot} from "../interface/Template/Slot";
-import {TwoCardTemplate} from "../interface/Template/TemplateInterface";
-import {DeckInterface} from "../interface/Deck/DeckInterface";
+import {SlotInterface} from "../interface/Template/SlotInterface";
+import {Deck} from "../interface/Deck/Deck";
 
 
 export const startingTable: TableState = {
@@ -17,7 +16,7 @@ export const startingTable: TableState = {
     isClean: true,
 };
 
-const getCleanDecks = (): DeckInterface[] => {
+const getCleanDecks = (): Deck[] => {
     let f = new FourDirectionsDeck();
     let i = new IChingDeck();
     return [f, i];
@@ -62,8 +61,7 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
                 isClean: true,
                 selectedDecks: selected,
                 stagedDeck: selected[getIndexOfStagedDeck(table)],
-                selectedTemplate: new TwoCardTemplate({
-                    slots: [
+                selectedTemplate: new Template("s", [
                         {
                             number: 1,
                             name: "Inner World",
@@ -76,8 +74,7 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
                             populated: false,
                             faceDown: true,
                         },
-                    ]
-                })
+                    ])
             }
         // reset deck states
         case PULL_CARD:
@@ -87,7 +84,7 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
             // now that the pulled card has been stored from the remaining pile, modify remaining
             remaining.splice(index, 1);
             // used to map through slots and see if a slot should be updated
-            const pullCardToSelectedSlot = (slot: Slot, slotNumber: number) => {
+            const pullCardToSelectedSlot = (slot: SlotInterface, slotNumber: number) => {
                 if (slot.number === slotNumber) {
                     slot.populated = true;
                     slot.card = pulled;
@@ -99,10 +96,6 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
             return {
                 ...table,
                 isClean: false,
-                // stagedDeck: { // I think this is not needed since the remaining already got mutated
-                //     ...table.stagedDeck,
-                //     remainingCards: remaining,
-                // },
                 selectedTemplate: {
                     ...table.selectedTemplate,
                     templateState: {
@@ -113,7 +106,7 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
                 }
             }
         case FLIP_CARD:
-            const flipCardOnSelectedSlot = (slot: Slot, slotNumber: number) => {
+            const flipCardOnSelectedSlot = (slot: SlotInterface, slotNumber: number) => {
                 if (slot.number === slotNumber) {
                     slot.faceDown = false;
                     return slot;

@@ -1,5 +1,5 @@
-import {Slot} from "./Slot";
+import {SlotInterface} from "./SlotInterface";
 
 export interface TemplateState {
-    slots: Slot[];
+    slots: SlotInterface[];
 }
