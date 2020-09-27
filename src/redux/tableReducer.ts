@@ -8,8 +8,7 @@ import {Card} from "../interface/Deck/Card";
 import {Slot} from "../interface/Template/Slot";
 import {TwoCardTemplate} from "../interface/Template/TemplateInterface";
 import {DeckInterface} from "../interface/Deck/DeckInterface";
-import fourDirectionsCards from "../decks/fourDirections/fourDirectionsCards";
-import iChingCards from "../decks/iChing/iChingCards";
+
 
 export const startingTable: TableState = {
     selectedDecks: [fourDirectionsDeck, iChingDeck],
@@ -19,33 +18,19 @@ export const startingTable: TableState = {
 };
 
 const getCleanDecks = (): DeckInterface[] => {
-    let f = new FourDirectionsDeck({
-        remainingCards: fourDirectionsCards,
-        pulledCards: []
-    });
-    let i = new IChingDeck({
-        remainingCards: iChingCards,
-        pulledCards: []
-    });
+    let f = new FourDirectionsDeck();
+    let i = new IChingDeck();
     return [f, i];
 }
 
-// @todo I think this is a problem because the staged deck is a different instance than the 2 selected
-const preserveStagedDeck = (table: TableState): DeckInterface => {
-    let f = new FourDirectionsDeck({
-        remainingCards: [...fourDirectionsCards],
-        pulledCards: []
-    });
+const getIndexOfStagedDeck = (table: TableState): number => {
     switch (table.stagedDeck.name){
         case "Four Directions" :
-            return f;
+            return 0;
         case "iChing" :
-            return new IChingDeck({
-                remainingCards: [...iChingCards],
-                pulledCards: []
-            });
+            return 1;
         default:
-            return f;
+            return 0;
     }
 }
 
@@ -71,11 +56,12 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
         case SELECT_TEMPLATE:
             // return action.payload;
         case CLEAN_TABLE:
+            let selected = getCleanDecks();
             return {
                 ...table,
                 isClean: true,
-                selectedDecks: getCleanDecks(),
-                stagedDeck: preserveStagedDeck(table),
+                selectedDecks: selected,
+                stagedDeck: selected[getIndexOfStagedDeck(table)],
                 selectedTemplate: new TwoCardTemplate({
                     slots: [
                         {
@@ -96,16 +82,15 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
         // reset deck states
         case PULL_CARD:
             let index: number = table.stagedDeck.getRandomCardIndex();
-            let remaining: Card[] = table.stagedDeck.getRemainingCards();
-            let prevPulled: Card[] = table.stagedDeck.getPulledCards();
-            let justPulled: Card = remaining[index];
+            let remaining: Card[] = table.stagedDeck.remainingCards;
+            let pulled: Card = remaining[index];
             // now that the pulled card has been stored from the remaining pile, modify remaining
             remaining.splice(index, 1);
             // used to map through slots and see if a slot should be updated
             const pullCardToSelectedSlot = (slot: Slot, slotNumber: number) => {
                 if (slot.number === slotNumber) {
                     slot.populated = true;
-                    slot.card = justPulled;
+                    slot.card = pulled;
                     slot.deck = table.stagedDeck;
                     return slot;
                 }
@@ -114,13 +99,10 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
             return {
                 ...table,
                 isClean: false,
-                stagedDeck: {
-                    ...table.stagedDeck,
-                    deckState: {
-                        remainingCards: remaining,
-                        pulledCards: prevPulled.concat(justPulled)
-                    }
-                },
+                // stagedDeck: { // I think this is not needed since the remaining already got mutated
+                //     ...table.stagedDeck,
+                //     remainingCards: remaining,
+                // },
                 selectedTemplate: {
                     ...table.selectedTemplate,
                     templateState: {
