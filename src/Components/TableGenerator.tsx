@@ -9,6 +9,7 @@ import DeckPresenter from "./DeckPresenter";
 import {DeckInterface} from "../interface/Deck/DeckInterface";
 import {TemplateInterface} from "../interface/Template/TemplateInterface";
 import {Action} from "redux";
+import {cleanTable} from "../interface/Actions/ActionCreators";
 
 
 const theme = {
@@ -63,7 +64,6 @@ function mapStateToProps(state : RootState) {
     };
 }
 
-const cleanTable = () => ({type: 'CLEAN_TABLE'});
 
 const mapDispatchToProps = (dispatch: any) : ConnectedDispatch => {
     return {

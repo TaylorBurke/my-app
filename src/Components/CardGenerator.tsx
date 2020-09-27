@@ -26,10 +26,9 @@ const CardGenerator = ({props}: CardProps) => {
 
     return (
         <ThemeProvider theme={theme}>
-            <br/>
             <div style={{
                 display: 'flex', flexDirection: 'column', border: `5px solid ${theme.black}`, borderRadius: 5,
-                alignItems: 'center', boxShadow: `${theme.bs}`, padding: 12, margin: 4,
+                alignItems: 'center', boxShadow: `${theme.bs}`,
                 backgroundColor: props.card?.color, width: props.deck?.width, height: props.deck?.height
             }}>
                 <div style={{justifyContent: 'center', alignItems: 'center'}}>

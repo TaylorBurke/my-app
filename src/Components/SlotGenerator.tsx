@@ -7,6 +7,7 @@ import {RootState} from "../interface/RootState";
 import {getTableState} from "../redux/tableReducer";
 import {DeckInterface} from "../interface/Deck/DeckInterface";
 import CardGenerator from "./CardGenerator";
+import {flipCard, pullCard} from "../interface/Actions/ActionCreators";
 
 type SlotProps = {
     props: {
@@ -25,7 +26,7 @@ const theme = {
     lightgrey: '#E1E1E1',
     offWhite: '#EDEDED',
     maxWidth: '1000px',
-    bs: '0 12px 24px 0 rgba(0, 0, 0, 0.5)',
+    bs: '0 2px 4px 0 rgba(0, 0, 0, 0.5)',
 };
 
 const SlotGenerator = ({props, pullCard, flipCard, stagedDeck, isClean}: SlotProps) => {
@@ -89,8 +90,6 @@ function mapStateToProps(state : RootState) {
     };
 }
 
-const pullCard = (slotNumber: number) => ({type: 'PULL_CARD', payload: slotNumber});
-const flipCard = (slotNumber: number) => ({type: 'FLIP_CARD', payload: slotNumber});
 
 const mapDispatchToProps = (dispatch: any) : ConnectedDispatch => {
     return {

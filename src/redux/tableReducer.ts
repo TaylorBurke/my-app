@@ -95,14 +95,12 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
             }
         // reset deck states
         case PULL_CARD:
-            // todo: logic belong here or in action?
             let index: number = table.stagedDeck.getRandomCardIndex();
             let remaining: Card[] = table.stagedDeck.getRemainingCards();
             let prevPulled: Card[] = table.stagedDeck.getPulledCards();
             let justPulled: Card = remaining[index];
             // now that the pulled card has been stored from the remaining pile, modify remaining
             remaining.splice(index, 1);
-
             // used to map through slots and see if a slot should be updated
             const pullCardToSelectedSlot = (slot: Slot, slotNumber: number) => {
                 if (slot.number === slotNumber) {
@@ -113,7 +111,6 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
                 }
                 return slot;
             }
-
             return {
                 ...table,
                 isClean: false,
@@ -134,8 +131,6 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
                 }
             }
         case FLIP_CARD:
-
-            // todo consider moving these helper functions somewhere more appropriate
             const flipCardOnSelectedSlot = (slot: Slot, slotNumber: number) => {
                 if (slot.number === slotNumber) {
                     slot.faceDown = false;
@@ -143,7 +138,6 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
                 }
                 return slot;
             }
-
             return {
                 ...table,
                 selectedTemplate: {
