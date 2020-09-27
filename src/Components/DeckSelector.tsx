@@ -2,48 +2,67 @@ import React from 'react';
 import {AppState} from "../interface/AppState";
 import {RootState} from "../interface/RootState";
 import {connect} from "react-redux";
-import {getAppState} from "../redux/rootReducer";
+import {getTableState} from "../redux/tableReducer";
+import {Action} from "redux";
+import {Deck} from "../interface/Deck/Deck";
+import {deselectDeck, selectDeck} from "../interface/Actions/ActionCreators";
 
+type DeckSelectorProps = {
+    allDecks: Deck[],
+    selectedDecks: Deck[],
+    selectDeck: any,
+    deselectDeck: any,
+}
 
-const DeckSelector = (props : AppState) => {
+const DeckSelector = ({allDecks, selectedDecks, selectDeck, deselectDeck} : DeckSelectorProps) => {
 
-    const handleChange = () => {}
+    const handleChange = (deck: Deck) : void => {
+        if (selectedDecks.filter(d => d.name === deck.name).length > 0){
+            deselectDeck(deck);
+        } else {
+            selectDeck(deck);
+        }
+    }
 
     return (
         <div>
-            {props.decks.map((e)=> {
+            {allDecks.map((d)=> {
                 return (
                     <div>
-                        <input onChange={() => handleChange()} type={"checkbox"} name={e.name}/>
-                        {e.name}
+                        <input
+                            checked = {selectedDecks.filter(deck => deck.name === d.name).length > 0}
+                            onClick={() => handleChange(d)} type={"checkbox"} name={d.name}/>
+                        {d.name}
                     </div>
                 )
             } )}
         </div>
     )
-
 }
 
-// function mapDispatchToProps (dispatch){
-//     return {
-//         selectDeck: () => {
-//             dispatch(selectDeck())
-//         }
-//     }
-// }
+interface ConnectedDispatch {
+    selectDeck: (d: Deck) => Action;
+    deselectDeck: (d: Deck) => Action;
+}
 
 function mapStateToProps(state : RootState) {
     const {
-        templates,
-        decks
-    } = getAppState(state);
+        allDecks,
+        selectedDecks
+    } = getTableState(state);
     return {
-        templates,
-        decks
+        allDecks,
+        selectedDecks
     };
 }
 
-// export const connectedDeckSelector = connect(mapStateToProps, mapDispatchToProps)(DeckSelector)
-export const connectedDeckSelector = connect(mapStateToProps)(DeckSelector)
+const mapDispatchToProps = (dispatch: any) : ConnectedDispatch => {
+    return {
+        selectDeck: (d: Deck) => dispatch(selectDeck(d)),
+        deselectDeck: (d: Deck) => dispatch(deselectDeck(d)),
+    }
+}
+
+export const connectedDeckSelector = connect(mapStateToProps, mapDispatchToProps)(DeckSelector)
 
 export default connectedDeckSelector;

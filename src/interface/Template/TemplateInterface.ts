@@ -1,6 +1,6 @@
-import {TemplateState} from "./TemplateState";
+import {Slot} from "./defaultSlot";
 
 export interface TemplateInterface {
     name: string;
-    templateState: TemplateState;
+    slots: Slot[];
 }

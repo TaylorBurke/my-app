@@ -1,15 +1,14 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import CardGenerator from './CardGenerator';
 import {connect} from 'react-redux';
 import {getTableState} from "../redux/tableReducer";
 import {RootState} from "../interface/RootState";
 import SlotGenerator from "./SlotGenerator";
 import DeckPresenter from "./DeckPresenter";
-import {DeckInterface} from "../interface/Deck/DeckInterface";
-import {TemplateInterface} from "../interface/Template/TemplateInterface";
 import {Action} from "redux";
 import {cleanTable} from "../interface/Actions/ActionCreators";
+import {Template} from "../interface/Template/defaultTemplate";
+import {Deck} from "../interface/Deck/Deck";
 
 
 const theme = {
@@ -23,9 +22,9 @@ const theme = {
   };
 
 type TableGeneratorProps = {
-    selectedDecks: DeckInterface[];
-    stagedDeck: DeckInterface;
-    selectedTemplate: TemplateInterface;
+    selectedDecks: Deck[];
+    stagedDeck: Deck;
+    selectedTemplate: Template;
     isClean: boolean;
     cleanTable: any;
 }
@@ -40,7 +39,7 @@ const TableGenerator = ({stagedDeck, selectedDecks, selectedTemplate, isClean, c
             <DeckPresenter props={{selectedDecks, stagedDeck}} />
             <div className='cleanButton'
                  onClick={()=>{cleanTable()}}>Clean Table</div>
-            {selectedTemplate.templateState.slots.map((s)=> (<SlotGenerator props={{slot: s}} />))}
+            {selectedTemplate.slots.map((s)=> (<SlotGenerator props={{slot: s}} />))}
         </ThemeProvider>
     )
 }

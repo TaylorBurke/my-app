@@ -1,38 +1,36 @@
 import {TableState} from "../interface/Table/TableState";
 import {TableAction} from "../interface/Actions/TableAction";
-import {FourDirectionsDeck, fourDirectionsDeck} from "../decks/fourDirections/fourDirectionsDeck";
-import {defaultTemplate, Template} from "../interface/Template/defaultTemplate";
+import {fourDirectionsDeck} from "../decks/fourDirections/fourDirectionsDeck";
+import {defaultTemplate, perspective, Template, twoCards} from "../interface/Template/defaultTemplate";
 import {RootState} from "../interface/RootState";
-import {IChingDeck, iChingDeck} from "../decks/iChing/iChingDeck";
+import {iChingDeck} from "../decks/iChing/iChingDeck";
 import {Card} from "../interface/Deck/Card";
 import {SlotInterface} from "../interface/Template/SlotInterface";
 import {Deck} from "../interface/Deck/Deck";
-import {defaultSlot, Slot} from "../interface/Template/defaultSlot";
+import {stageDeck} from "../interface/Actions/ActionCreators";
 
 
 export const startingTable: TableState = {
     allDecks:  [fourDirectionsDeck, iChingDeck],
     selectedDecks: [fourDirectionsDeck, iChingDeck],
     stagedDeck: fourDirectionsDeck,
-    allTemplates: [defaultTemplate],
+    allTemplates: [defaultTemplate, twoCards, perspective],
     selectedTemplate: defaultTemplate,
     isClean: true,
 };
 
-const getCleanDecks = (): Deck[] => {
-    let f = new FourDirectionsDeck();
-    let i = new IChingDeck();
-    return [f, i];
+const cleanDecks = (decks: Deck[]): void => {
+    for (const d of decks){
+        d.remainingCards = [...d.allCards]
+    }
 }
 
-const getIndexOfStagedDeck = (table: TableState): number => {
-    switch (table.stagedDeck.name){
-        case "Four Directions" :
-            return 0;
-        case "iChing" :
-            return 1;
-        default:
-            return 0;
+const cleanTemplates = (templates: Template[]): void => {
+    for (const t of templates){
+        for (const s of t.slots){
+            s.populated = false;
+            s.faceDown = true;
+        }
     }
 }
 
@@ -47,25 +45,49 @@ const FLIP_CARD = "FLIP_CARD"; // change the face up status of the current slot
 
 export const tableReducer = (table: TableState = startingTable, action: TableAction) => {
     switch (action.type) {
+        case CREATE_TEMPLATE:
+            return {
+                ...table,
+                allTemplates: [...table.allTemplates, action.payload]
+            }
         case SELECT_DECK:
-            // return action.payload;
+            return {
+                ...table,
+                selectedDecks: [...table.selectedDecks, action.payload]
+            }
         case DESELECT_DECK:
-            // return action.payload;
+            if (table.stagedDeck === action.payload) {
+                const stageQualifiedDeck = (disqualified: Deck) : Deck => {
+                    let qualified = table.selectedDecks.filter(d => d != disqualified);
+                    return qualified[0];
+                }
+                return {
+                    ...table,
+                    stagedDeck: stageQualifiedDeck(action.payload),
+                    selectedDecks: [...table.selectedDecks.filter((d)=> d.name != action.payload.name)]
+                }
+            } else {
+                return {
+                    ...table,
+                    selectedDecks: [...table.selectedDecks.filter((d)=> d.name != action.payload.name)]
+                }
+            }
         case STAGE_DECK:
             return {
                 ...table,
                 stagedDeck: action.payload
             };
         case SELECT_TEMPLATE:
-            // return action.payload;
+            return {
+                ...table,
+                selectedTemplate: action.payload
+            }
         case CLEAN_TABLE:
-            let selected = getCleanDecks();
+            cleanDecks(table.selectedDecks);
+            cleanTemplates(table.allTemplates);
             return {
                 ...table,
                 isClean: true,
-                selectedDecks: selected,
-                stagedDeck: selected[getIndexOfStagedDeck(table)],
-                selectedTemplate: new Template("default", [{...defaultSlot}])
             }
         // reset deck states
         case PULL_CARD:
@@ -90,7 +112,7 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
                 selectedTemplate: {
                     ...table.selectedTemplate,
                     templateState: {
-                        slots: table.selectedTemplate.templateState.slots.map((s) => {
+                        slots: table.selectedTemplate.slots.map((s) => {
                             return pullCardToSelectedSlot(s, action.payload)
                         })
                     }
@@ -109,7 +131,7 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
                 selectedTemplate: {
                     ...table.selectedTemplate,
                     templateState: {
-                        slots: table.selectedTemplate.templateState.slots.map((s) => {
+                        slots: table.selectedTemplate.slots.map((s) => {
                             return flipCardOnSelectedSlot(s, action.payload)
                         })
                     }
@@ -122,12 +144,16 @@ export const tableReducer = (table: TableState = startingTable, action: TableAct
 
 export function getTableState(state: RootState) {
     const {
+        allTemplates,
+        allDecks,
         selectedDecks,
         selectedTemplate,
         isClean,
         stagedDeck,
     } = state.table;
     return {
+        allTemplates,
+        allDecks,
         selectedDecks,
         selectedTemplate,
         isClean,

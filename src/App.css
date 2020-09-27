@@ -50,5 +50,15 @@
   background-color: #393939;
   color: #E1E1E1;
   padding: 12px;
+  margin: 24px;
+  border-radius: 8px;
+}
+
+
+.selectedButton {
+  background-color: #a43b3b;
+  color: #E1E1E1;
+  padding: 12px;
+  margin: 24px;
   border-radius: 8px;
 }
