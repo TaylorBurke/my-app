@@ -9,25 +9,25 @@ const waterImg = require('./fourDirectionsImages/water-symbol.svg.png')
 const fourDirectionsCards : Card[] = [
     {
       title: "East",
-      description: "Spring, Air, Mind",
+      description: "https://whatismyspiritanimal.com/cardinal-directions/east-symbolism-meaning/",
       image: airImg,
       color: "orange"
     },
     {
       title: "South",
-      description: "Summer, Fire, Heart",
+      description: "https://whatismyspiritanimal.com/cardinal-directions/south-symbolism-meaning/",
       image: fireImg,
       color: "tomato"
     },
     {
       title: "West",
-      description: "Fall, Water, Intuition",
+      description: "https://whatismyspiritanimal.com/cardinal-directions/west-symbolism-meaning/",
       image: earthImg,
       color: "dodgerBlue"
     },
     {
       title: "North",
-      description: "Winter, Earth, Body",
+      description: "https://whatismyspiritanimal.com/cardinal-directions/north-symbolism-meaning/",
       image: waterImg,
       color: "mediumSeaGreen"
     },

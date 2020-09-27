@@ -5,7 +5,7 @@ import {Deck} from "../../interface/Deck/Deck";
 
 export class IChingDeck extends Deck implements DeckInterface{
     constructor() {
-        super("iChing", iChingCards, '#7c2c85', 300, 100, 200)
+        super("iChing", iChingCards, '#7c2c85', 265, 100, 200)
     }
 }
 

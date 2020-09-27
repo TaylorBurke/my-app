@@ -34,7 +34,8 @@ const CardGenerator = ({props}: CardProps) => {
                 <div style={{justifyContent: 'center', alignItems: 'center'}}>
                     <p>{props.card?.title}</p>
                     <img width={props.deck?.imageWidth} src={props.card?.image} className="image" alt=""/>
-                    <p style={{fontSize: 12}}>{props.card?.description}</p>
+                    <br/>
+                    <a target="blank" href={props.card?.description} style={{fontSize: 12}}>Read More</a>
                 </div>
             </div>
         </ThemeProvider>
