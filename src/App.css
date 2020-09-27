@@ -45,3 +45,10 @@
 .nav a:hover {
   color: white;
 }
+
+.cleanButton {
+  background-color: #393939;
+  color: #E1E1E1;
+  padding: 12px;
+  border-radius: 8px;
+}
