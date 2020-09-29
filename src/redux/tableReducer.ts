@@ -52,6 +52,11 @@ const cleanTemplates = (templates: Template[]): Template[] => {
     return templates;
 }
 
+const findDeckToStage = (disqualified: Deck, selectedDecks: Deck[]): Deck => {
+    let qualified = selectedDecks.filter(d => d.name != disqualified.name);
+    return qualified[0];
+}
+
 // createReducer magically returns a new state - adheres to "don't mutate state" rule
 export const tableReducer = createReducer(startingTable, {
     CREATE_TEMPLATE: (state, action) => {
@@ -61,12 +66,8 @@ export const tableReducer = createReducer(startingTable, {
         state.selectedDecks = [...state.selectedDecks, action.payload]
     },
     DESELECT_DECK: (state, action) => {
-        const stageQualifiedDeck = (disqualified: Deck): Deck => {
-            let qualified = state.selectedDecks.filter(d => d.name != disqualified.name);
-            return qualified[0];
-        }
         if (state.stagedDeck.name === action.payload.name) {
-            state.stagedDeck = stageQualifiedDeck(action.payload);
+            state.stagedDeck = findDeckToStage(action.payload, state.selectedDecks);
             state.selectedDecks = [...state.selectedDecks.filter((d) => d.name != action.payload.name)];
         } else {
             state.selectedDecks = [...state.selectedDecks.filter((d) => d.name != action.payload.name)];
@@ -79,10 +80,14 @@ export const tableReducer = createReducer(startingTable, {
         state.selectedTemplate = action.payload;
     },
     CLEAN_TABLE: (state, action) => {
-        // todo: this broke (but sometimes still works?)
         if (!state.isClean) {
             state.allTemplates = cleanTemplates(state.allTemplates);
+            let [cleanSelected] = [...cleanTemplates([state.selectedTemplate])];
+            state.selectedTemplate = cleanSelected;
+            state.allDecks = cleanDecks(state.allDecks);
             state.selectedDecks = cleanDecks(state.selectedDecks);
+            let [cleanStaged] = [...cleanDecks([state.stagedDeck])];
+            state.stagedDeck = cleanStaged;
             state.isClean = true;
         }
     },
