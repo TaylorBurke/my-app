@@ -8,6 +8,6 @@ export interface DeckInterface {
     height: number,
     color: string;
     allCards: Card[];
-    getRandomCardIndex(): number;
+    pullRandomCard(): Card;
     remainingCards: Card[];
 }

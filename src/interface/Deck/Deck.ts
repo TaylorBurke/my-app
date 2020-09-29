@@ -11,9 +11,13 @@ export class Deck implements DeckInterface{
         this.numberOfCards = allCards.length;
         this.remainingCards = [...allCards];
         this.width = width;
-        this.getRandomCardIndex = () => {
+        this.pullRandomCard = () => {
             let max = this.remainingCards.length;
-            return Math.floor(Math.random() * max) // between 0 and (max -1)
+            let index = Math.floor(Math.random() * max);
+            let pulled = this.remainingCards[index];
+            // as a side effect, the pulled card is removed from remaining cards
+            this.remainingCards.splice(index, 1);
+            return pulled;
         };
     }
     allCards: Card[];
@@ -24,6 +28,6 @@ export class Deck implements DeckInterface{
     numberOfCards: number;
     remainingCards: Card[];
     width: number;
-    getRandomCardIndex: () => number;
+    pullRandomCard: () => Card;
 
 }

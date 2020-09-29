@@ -1,17 +1,15 @@
 import {TableState} from "../interface/Table/TableState";
-import {TableAction} from "../interface/Actions/TableAction";
 import {fourDirectionsDeck} from "../decks/fourDirections/fourDirectionsDeck";
 import {defaultTemplate, perspective, Template, twoCards} from "../interface/Template/defaultTemplate";
 import {RootState} from "../interface/RootState";
 import {iChingDeck} from "../decks/iChing/iChingDeck";
 import {Card} from "../interface/Deck/Card";
-import {SlotInterface} from "../interface/Template/SlotInterface";
 import {Deck} from "../interface/Deck/Deck";
-import {stageDeck} from "../interface/Actions/ActionCreators";
-
+import {createReducer} from '@reduxjs/toolkit';
+import {Slot} from "../interface/Template/defaultSlot";
 
 export const startingTable: TableState = {
-    allDecks:  [fourDirectionsDeck, iChingDeck],
+    allDecks: [fourDirectionsDeck, iChingDeck],
     selectedDecks: [fourDirectionsDeck, iChingDeck],
     stagedDeck: fourDirectionsDeck,
     allTemplates: [defaultTemplate, twoCards, perspective],
@@ -19,128 +17,88 @@ export const startingTable: TableState = {
     isClean: true,
 };
 
-const cleanDecks = (decks: Deck[]): void => {
-    for (const d of decks){
-        d.remainingCards = [...d.allCards]
+const updatePulledSlot = (slot: Slot, slotNumber: number, card: Card, deck: Deck): Slot => {
+    if (slot.number === slotNumber) {
+        slot.populated = true;
+        slot.card = card;
+        slot.deck = deck;
+        return slot;
     }
+    return slot;
 }
 
-const cleanTemplates = (templates: Template[]): void => {
-    for (const t of templates){
-        for (const s of t.slots){
+const updateFlippedSlot = (slot: Slot, slotNumber: number): Slot => {
+    if (slot.number === slotNumber) {
+        slot.faceDown = false;
+        return slot;
+    }
+    return slot;
+}
+
+const cleanDecks = (decks: Deck[]): Deck[] => {
+    for (const d of decks) {
+        d.remainingCards = [...d.allCards]
+    }
+    return decks;
+}
+
+const cleanTemplates = (templates: Template[]): Template[] => {
+    for (const t of templates) {
+        for (const s of t.slots) {
             s.populated = false;
             s.faceDown = true;
         }
     }
+    return templates;
 }
 
-const SELECT_DECK = 'SELECT_DECK'; // moves a deck onto the table
-const DESELECT_DECK = 'DESELECT_DECK'; // removes a deck from the table
-const STAGE_DECK = 'STAGE_DECK'; // next card will be pulled from the staged deck
-const CREATE_TEMPLATE = 'CREATE_TEMPLATE'; // construct a template from user input and put it in
-const SELECT_TEMPLATE = 'SELECT_TEMPLATE'; // choose a template to use for the table
-const CLEAN_TABLE = "CLEAN_TABLE"; // clear all slots and reset all deck states (template and staged decks are not changed)
-const PULL_CARD = "PULL_CARD"; // move a card from the selected deck into the next slot, to remain face down
-const FLIP_CARD = "FLIP_CARD"; // change the face up status of the current slot
-
-export const tableReducer = (table: TableState = startingTable, action: TableAction) => {
-    switch (action.type) {
-        case CREATE_TEMPLATE:
-            return {
-                ...table,
-                allTemplates: [...table.allTemplates, action.payload]
-            }
-        case SELECT_DECK:
-            return {
-                ...table,
-                selectedDecks: [...table.selectedDecks, action.payload]
-            }
-        case DESELECT_DECK:
-            if (table.stagedDeck === action.payload) {
-                const stageQualifiedDeck = (disqualified: Deck) : Deck => {
-                    let qualified = table.selectedDecks.filter(d => d != disqualified);
-                    return qualified[0];
-                }
-                return {
-                    ...table,
-                    stagedDeck: stageQualifiedDeck(action.payload),
-                    selectedDecks: [...table.selectedDecks.filter((d)=> d.name != action.payload.name)]
-                }
-            } else {
-                return {
-                    ...table,
-                    selectedDecks: [...table.selectedDecks.filter((d)=> d.name != action.payload.name)]
-                }
-            }
-        case STAGE_DECK:
-            return {
-                ...table,
-                stagedDeck: action.payload
-            };
-        case SELECT_TEMPLATE:
-            return {
-                ...table,
-                selectedTemplate: action.payload
-            }
-        case CLEAN_TABLE:
-            cleanDecks(table.selectedDecks);
-            cleanTemplates(table.allTemplates);
-            return {
-                ...table,
-                isClean: true,
-            }
-        // reset deck states
-        case PULL_CARD:
-            let index: number = table.stagedDeck.getRandomCardIndex();
-            let remaining: Card[] = table.stagedDeck.remainingCards;
-            let pulled: Card = remaining[index];
-            // now that the pulled card has been stored from the remaining pile, modify remaining
-            remaining.splice(index, 1);
-            // used to map through slots and see if a slot should be updated
-            const pullCardToSelectedSlot = (slot: SlotInterface, slotNumber: number) => {
-                if (slot.number === slotNumber) {
-                    slot.populated = true;
-                    slot.card = pulled;
-                    slot.deck = table.stagedDeck;
-                    return slot;
-                }
-                return slot;
-            }
-            return {
-                ...table,
-                isClean: false,
-                selectedTemplate: {
-                    ...table.selectedTemplate,
-                    templateState: {
-                        slots: table.selectedTemplate.slots.map((s) => {
-                            return pullCardToSelectedSlot(s, action.payload)
-                        })
-                    }
-                }
-            }
-        case FLIP_CARD:
-            const flipCardOnSelectedSlot = (slot: SlotInterface, slotNumber: number) => {
-                if (slot.number === slotNumber) {
-                    slot.faceDown = false;
-                    return slot;
-                }
-                return slot;
-            }
-            return {
-                ...table,
-                selectedTemplate: {
-                    ...table.selectedTemplate,
-                    templateState: {
-                        slots: table.selectedTemplate.slots.map((s) => {
-                            return flipCardOnSelectedSlot(s, action.payload)
-                        })
-                    }
-                }
-            }
-        default:
-            return table;
+// createReducer magically returns a new state - adheres to "don't mutate state" rule
+export const tableReducer = createReducer(startingTable, {
+    CREATE_TEMPLATE: (state, action) => {
+        state.allTemplates = [...state.allTemplates, action.payload];
+    },
+    SELECT_DECK: (state, action) => {
+        state.selectedDecks = [...state.selectedDecks, action.payload]
+    },
+    DESELECT_DECK: (state, action) => {
+        const stageQualifiedDeck = (disqualified: Deck): Deck => {
+            let qualified = state.selectedDecks.filter(d => d.name != disqualified.name);
+            return qualified[0];
+        }
+        if (state.stagedDeck.name === action.payload.name) {
+            state.stagedDeck = stageQualifiedDeck(action.payload);
+            state.selectedDecks = [...state.selectedDecks.filter((d) => d.name != action.payload.name)];
+        } else {
+            state.selectedDecks = [...state.selectedDecks.filter((d) => d.name != action.payload.name)];
+        }
+    },
+    STAGE_DECK: (state, action) => {
+        state.stagedDeck = action.payload;
+    },
+    SELECT_TEMPLATE: (state, action) => {
+        state.selectedTemplate = action.payload;
+    },
+    CLEAN_TABLE: (state, action) => {
+        // todo: this broke (but sometimes still works?)
+        if (!state.isClean) {
+            state.allTemplates = cleanTemplates(state.allTemplates);
+            state.selectedDecks = cleanDecks(state.selectedDecks);
+            state.isClean = true;
+        }
+    },
+    PULL_CARD: (state, action) => {
+        let pulled: Card = state.stagedDeck.pullRandomCard();
+        state.isClean = false;
+        state.selectedTemplate.slots = state.selectedTemplate.slots.map(s=> {
+            return updatePulledSlot(s, action.payload, pulled, state.stagedDeck);
+        });
+    },
+    FLIP_CARD: (state, action) => {
+        state.selectedTemplate.slots = state.selectedTemplate.slots.map(s=> {
+            return updateFlippedSlot(s, action.payload);
+        });
     }
-}
+})
 
 export function getTableState(state: RootState) {
     const {

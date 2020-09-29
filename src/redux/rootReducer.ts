@@ -9,7 +9,7 @@ import {defaultTemplate} from "../interface/Template/defaultTemplate";
 import {DeckInterface} from "../interface/Deck/DeckInterface";
 import {fourDirectionsDeck} from '../decks/fourDirections/fourDirectionsDeck'
 import {iChingDeck} from "../decks/iChing/iChingDeck";
-import {tableReducer} from "./tableReducer";
+import { tableReducer} from "./tableReducer";
 import {RootState} from "../interface/RootState";
 
 
