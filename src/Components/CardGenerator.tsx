@@ -23,6 +23,13 @@ const theme = {
 
 const CardGenerator = ({props}: CardProps) => {
 
+    let details : string = "";
+
+    const handleClick = () => {
+        if (props.card?.description)
+        details = props.card?.description;
+    }
+
 
     return (
         <ThemeProvider theme={theme}>
@@ -35,7 +42,9 @@ const CardGenerator = ({props}: CardProps) => {
                     <p>{props.card?.title}</p>
                     <img width={props.deck?.imageWidth} src={props.card?.image} className="image" alt=""/>
                     <br/>
-                    <a target="blank" href={props.card?.description} style={{fontSize: 12}}>Read More</a>
+                    <div
+                        onClick={()=>handleClick()}
+                        style={{fontSize: 12}}>See More</div>
                 </div>
             </div>
         </ThemeProvider>
