@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {ThemeProvider} from 'styled-components';
 import {Card} from "../interface/Deck/Card";
-import {DeckInterface} from "../interface/Deck/DeckInterface";
+import {Deck} from "../interface/Deck/Deck";
+import DetailGenerator from "./DetailGenerator";
 
 type CardProps = {
     props: {
-        deck?: DeckInterface,
+        deck?: Deck,
         card?: Card
     }
 }
@@ -23,13 +24,13 @@ const theme = {
 
 const CardGenerator = ({props}: CardProps) => {
 
-    let details : string = "";
+    const [details, setDetails] = useState("");
 
-    const handleClick = () => {
-        if (props.card?.description)
-        details = props.card?.description;
+    const expandDetails = () => {
+        if (props.card?.description) {
+            setDetails(props.card?.description);
+        }
     }
-
 
     return (
         <ThemeProvider theme={theme}>
@@ -43,10 +44,13 @@ const CardGenerator = ({props}: CardProps) => {
                     <img width={props.deck?.imageWidth} src={props.card?.image} className="image" alt=""/>
                     <br/>
                     <div
-                        onClick={()=>handleClick()}
+                        onClick={()=>expandDetails()}
                         style={{fontSize: 12}}>See More</div>
                 </div>
             </div>
+            {
+                details && (<DetailGenerator details={details}/>)
+            }
         </ThemeProvider>
     )
 }
