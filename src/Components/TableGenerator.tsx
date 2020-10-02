@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { ThemeProvider } from 'styled-components';
 import {connect} from 'react-redux';
 import {getTableState} from "../redux/tableReducer";
@@ -30,14 +30,28 @@ type TableGeneratorProps = {
 }
 
 
-const TableGenerator = ({stagedDeck, selectedDecks, selectedTemplate, isClean, cleanTable} : TableGeneratorProps) => {
-// need a helper function to implement the template
 
+const TableGenerator = ({stagedDeck, selectedDecks, selectedTemplate, isClean, cleanTable} : TableGeneratorProps) => {
+
+    const [color, setColor] = useState(theme.lightgrey);
+    const [shadow, setShadow] = useState(theme.bs);
+
+    const hoverEffect = () => {
+        setColor("white");
+        setShadow("0 2px 10px 2px #EDEDED");
+    }
+    const outEffect = () => {
+        setColor(theme.lightgrey);
+        setShadow(theme.bs);
+    }
 
     return (
         <ThemeProvider theme={theme}>
             <DeckPresenter props={{selectedDecks, stagedDeck}} />
             <div className='cleanButton'
+                 onMouseEnter={()=>hoverEffect()}
+                 onMouseLeave={()=>outEffect()}
+                 style={{backgroundColor: theme.grey, color: color, boxShadow: shadow}}
                  onClick={()=>{cleanTable()}}>Clean Table</div>
             {selectedTemplate.slots.map((s)=> (<SlotGenerator props={{slot: s}} />))}
         </ThemeProvider>
