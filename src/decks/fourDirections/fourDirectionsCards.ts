@@ -13,28 +13,28 @@ const fourDirectionsCards : Card[] = [
       details: "Honor the act of saying no, of not doing.",
       // affirmation: "I honor the act of saying no, of not doing.",
       image: airImg,
-      color: "orange"
+      color: "rgba(255, 201, 25, 1)"
     },
     {
       title: "South",
       description: "Fire, Passion, Inspired",
       details: "Our feelings are not to be avoided; they guide us to higher understanding.",
       image: fireImg,
-      color: "tomato"
+      color: "rgba(255, 101, 59, 1)"
     },
     {
       title: "West",
       description: "Water, Flow, Intuitive",
       details: "Connect within, and allow the divine source to expand.",
       image: earthImg,
-      color: "dodgerBlue"
+      color: "rgba(66, 135, 245, 1)"
     },
     {
       title: "North",
       description: "Earth, Material, Physical",
       details: "Care for your environment so that you may avoid exposure to toxicity.",
       image: waterImg,
-      color: "mediumSeaGreen"
+      color: "rgba(108, 217, 106, 1)"
     },
 
 ]
