@@ -25,7 +25,7 @@ const theme = {
     grey: '#3A3A3A',
     lightgrey: '#E1E1E1',
     offWhite: '#EDEDED',
-    maxWidth: '1000px',
+    maxWidth: '190px',
     bs: '0 2px 4px 0 rgba(0, 0, 0, 0.5)',
 };
 
@@ -66,6 +66,7 @@ const SlotGenerator = ({props, pullCard, flipCard, stagedDeck, isClean}: SlotPro
                     flipped :
                     empty
             }
+            <br/>
         </ThemeProvider>
     )
 }

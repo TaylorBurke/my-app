@@ -9,25 +9,30 @@ const waterImg = require('./fourDirectionsImages/water-symbol.svg.png')
 const fourDirectionsCards : Card[] = [
     {
       title: "East",
-      description: "https://whatismyspiritanimal.com/cardinal-directions/east-symbolism-meaning/",
+      description: "Air, Transparent, Mindful",
+      details: "Honor the act of saying no, of not doing.",
+      // affirmation: "I honor the act of saying no, of not doing.",
       image: airImg,
       color: "orange"
     },
     {
       title: "South",
-      description: "https://whatismyspiritanimal.com/cardinal-directions/south-symbolism-meaning/",
+      description: "Fire, Passion, Inspired",
+      details: "Our feelings are not to be avoided; they guide us to higher understanding.",
       image: fireImg,
       color: "tomato"
     },
     {
       title: "West",
-      description: "https://whatismyspiritanimal.com/cardinal-directions/west-symbolism-meaning/",
+      description: "Water, Flow, Intuitive",
+      details: "Connect within, and allow the divine source to expand.",
       image: earthImg,
       color: "dodgerBlue"
     },
     {
       title: "North",
-      description: "https://whatismyspiritanimal.com/cardinal-directions/north-symbolism-meaning/",
+      description: "Earth, Material, Physical",
+      details: "Care for your environment so that you may avoid exposure to toxicity.",
       image: waterImg,
       color: "mediumSeaGreen"
     },
