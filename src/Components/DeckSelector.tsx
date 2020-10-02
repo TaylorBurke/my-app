@@ -24,6 +24,8 @@ const DeckSelector = ({allDecks, selectedDecks, selectDeck, deselectDeck} : Deck
         }
     }
 
+    //todo found a bug where the app crashes if you try to go to the table and it doesn't have a deck in the selected decks
+
     return (
         <div>
             {allDecks.map((d)=> {

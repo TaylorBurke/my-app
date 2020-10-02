@@ -1,6 +1,5 @@
 import {DeckInterface} from "../../interface/Deck/DeckInterface";
 import iChingCards from "./iChingCards";
-import {Card} from "../../interface/Deck/Card";
 import {Deck} from "../../interface/Deck/Deck";
 
 export class IChingDeck extends Deck implements DeckInterface{
