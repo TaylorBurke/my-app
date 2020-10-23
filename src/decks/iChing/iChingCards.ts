@@ -70,18 +70,21 @@ const iChingCards : Card[] = [
     {
         title: "Ch'ien",
         description: "The Creative",
-        details: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#1",
+        details: "Persevere in heart as the primal force of creation is your center. From" +
+            "within your being will spring the origin of a new story. The power to further this creation depends " +
+            "on the purity of your heart. The potential to succeed is contained within conception." +
+            "\n\nPersevere in love.",
         image: forceImg,
         color: "gray",
     },
     {
         title: "K'un",
         description: "The Receptive",
-        details: "Becoming as still as the surface of a glass pond, we are capable of recieving all that the universe brings us. " +
+        details: "Become as still as the surface of a glass pond, empty like a cup capable of recieving all that the universe brings. " +
             "When we are full of ourselves we can't be receptive, just like water which is turbulent can't produce ripples. " +
             "Let go of conceptions and expectations. The unconscious mind becomes the receptacle of our most " +
             "secret and powerful desires, and the universe around us will act to manifest our dreams. " +
-            "\n\nBe still.",
+            "\n\nBe still, be empty.",
         image: fieldImg,
         color: "gray",
     },
