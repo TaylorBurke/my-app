@@ -77,7 +77,11 @@ const iChingCards : Card[] = [
     {
         title: "K'un",
         description: "The Receptive",
-        details: "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#2",
+        details: "Becoming as still as the surface of a glass pond, we are capable of recieving all that the universe brings us. " +
+            "When we are full of ourselves we can't be receptive, just like water which is turbulent can't produce ripples. " +
+            "Let go of conceptions and expectations. The unconscious mind becomes the receptacle of our most " +
+            "secret and powerful desires, and the universe around us will act to manifest our dreams. " +
+            "\n\nBe still.",
         image: fieldImg,
         color: "gray",
     },
